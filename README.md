@@ -21,3 +21,4 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
       Programmation des boutons pour savoir s'ils sont appuyés ou non appuyés en affichant le statut sur l'écran LCD.
 
 * Séance 5 (21/02/2024):
+      Rajout des librairies sur eagle.
