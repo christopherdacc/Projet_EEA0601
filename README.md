@@ -12,13 +12,15 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
       Branchement d'un afficheur LCD (EA DOGM163W-A) et allumage du rétroéclairage.
 
 * Séance 2.1 sup (02/02/2024):
-      Affichage de 'Bonjour le monde!' sur l'écran LCD.
+      programmation et affichage de 'Bonjour le monde!' sur l'écran LCD.
   
 * Séance 3 (07/02/2024):
       Branchement des boutons avec leurs résistances spécifiques.
 
 * Séance 4 (14/02/2024):
-      Programmation des boutons pour savoir s'ils sont appuyés ou non appuyés en affichant le statut sur l'écran LCD.
+      Programmation des boutons pour savoir s'ils sont appuyés ou non en affichant leurs états sur l'écran LCD.
 
 * Séance 5 (21/02/2024):
-      Rajout des librairies sur eagle.
+      Rajout des librairies sur Eagle.
+      Réalisation du schéma de la carte électronique sur Eagle
+      Début de la réalisation de la carte électronique sur Eagle ainsi que le typon
