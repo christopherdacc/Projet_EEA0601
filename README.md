@@ -22,5 +22,8 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
 
 * Séance 5 (21/02/2024):
       Rajout des librairies sur Eagle.
-      Réalisation du schéma de la carte électronique sur Eagle
-      Début de la réalisation de la carte électronique sur Eagle ainsi que le typon
+      Réalisation du schéma de la carte électronique sur Eagle.
+
+* Séance 5.1 sup (22/02/2024):
+      Finalisation du schéma de la carte électronique sur Eagle.
+      Début de la réalisation de la carte électronique sur Eagle ainsi que le typon.
