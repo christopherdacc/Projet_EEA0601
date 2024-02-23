@@ -165,7 +165,7 @@ int16_t main(void)
     /* -----------------------------------------------------------------------*/
     init_pins();
     InitLCD();
- 
+    int choix_men=0;
     
     LCDDisplayOn();
     
@@ -174,46 +174,122 @@ int16_t main(void)
         _wait10mus(300000);
         LCDDataWrite(chainedechar[i]);
     }
+    //fonction de declanchement de l'interface du menue
+    menu_principale();
     
-    while(1) {
-        if(detect_button_press(1)||detect_button_press(2)||detect_button_press(3)) {
-            if(detect_button_press(1))
-            {
-                LCDGoto(0,0);
-                LCDWriteStr("Button 0 = X");
-                _wait10mus(300000);
-            }
-            if(detect_button_press(2))
-            {
-                LCDGoto(1,0);
-                LCDWriteStr("Button 1 = X");
-                _wait10mus(300000);
-            }
-            if(detect_button_press(3))
-            {
-                LCDGoto(2,0);
-                LCDWriteStr("Button 2 = X");
-                _wait10mus(300000);
-            }
-            
-            
-        }
-        else if(!detect_button_press(1)||!detect_button_press(2)||!detect_button_press(3)) {
-            LCDClearDisplay();
-            LCDGoto(0,0);
-            LCDWriteStr("Button 0 = 0");
-            LCDGoto(1,0);
-            LCDWriteStr("Button 1 = 0");
-            LCDGoto(2,0);
-            LCDWriteStr("Button 2 = 0");
-            
-            _wait10mus(300000);
-        }
-    }
+    
+    
+    
+    
     
     while(1)
     {
-        
+       
     }
+    
+}
+
+
+void menu_principale()
+{
+    int counter_men=1, count_bout_1=0;
+    int choix=0;
+    do
+    {
+        LCDClearDisplay();
+        LCDWriteStr("   Bienvenue   ");
+        LCDGoto(1,0);
+        LCDWriteStr("       au       ");
+        LCDGoto(2,0);
+        LCDWriteStr("      menu      ");
+        _wait10mus(500000);
+        LCDClearDisplay();
+        do
+        {
+            int count_bout_2=0, count_bout_3=0, presser=1;
+            if(detect_button_press(1))
+            {
+                count_bout_1 += 1;
+            }
+            if(detect_button_press(2))
+            {
+                presser=count_bout_2 + 1;
+            }
+            if(detect_button_press(3))
+            {
+                presser=count_bout_3 + 1;
+            }
+            
+            if(presser%2=1)
+            {
+                LCDClearDisplay();
+                LCDWriteStr("1.Luminosite   X");
+                LCDGoto(1,0);
+                LCDWriteStr("2.Test Bouton");
+                choix = 1;
+                
+            }
+            if(count_bout_3%2=0)
+            {
+                LCDClearDisplay();
+                LCDWriteStr("1.Luminosite");
+                LCDGoto(1,0);
+                LCDWriteStr("2.Test Bouton  X");
+                choix = 2;
+            }
+         
+        }while(count_bout_1 == 1);
+        
+        if(choix=2)
+            {
+                do{
+                    if(detect_button_press(1)||detect_button_press(2)||detect_button_press(3)) {
+                        if(detect_button_press(1))
+                        {
+                            LCDGoto(0,0);
+                            LCDWriteStr("Button 1 = X");
+                            _wait10mus(300000);
+                        }
+                        if(detect_button_press(2))
+                        {
+                            LCDGoto(1,0);
+                            LCDWriteStr("Button 2 = X");
+                            _wait10mus(300000);
+                        }
+                        if(detect_button_press(3))
+                        {
+                            LCDGoto(2,0);
+                            LCDWriteStr("Button 3 = X");
+                            _wait10mus(300000);
+                        }
+
+
+                    }
+                    else if(!detect_button_press(1)||!detect_button_press(2)||!detect_button_press(3)) {
+                        LCDClearDisplay();
+                        LCDGoto(0,0);
+                        LCDWriteStr("Button 1 = 0");
+                        LCDGoto(1,0);
+                        LCDWriteStr("Button 2 = 0");
+                        LCDGoto(2,0);
+                        LCDWriteStr("Button 3 = 0");
+
+                        _wait10mus(300000);
+                    }
+                }while(detect_button_press(1)&&detect_button_press(2)&&detect_button_press(3));
+            }
+        if (choix=1)
+        {
+            LCDClearDisplay();
+            
+            
+            
+        }
+        
+        
+        
+        
+    }while(counter_men>10);
+    
     
 }
