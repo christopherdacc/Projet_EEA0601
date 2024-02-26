@@ -27,3 +27,9 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
 * Séance 5.1 sup (22/02/2024):
       Finalisation du schéma de la carte électronique sur Eagle.
       Début de la réalisation de la carte électronique sur Eagle ainsi que le typon.
+* Séance 5.2 sup (23/02/2024):
+      Début de la programmation d'un menu avec les options de test des boutons et changement de l'éclairage de l'écran.
+
+
+
+
