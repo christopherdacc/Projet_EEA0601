@@ -30,6 +30,9 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
 * Séance 5.2 sup (23/02/2024):
       Début de la programmation d'un menu avec les options de test des boutons et changement de l'éclairage de l'écran.
 
+* Travail Vacances (du 24/02/2024 au 02/03/2024):
+      Finalisation du code menu (prototype)
+
 
 
 
