@@ -66,6 +66,7 @@
 #include "./lib/periph_tmr.h"
 #include "./lib/periph_pwm.h"
 #include "./lib/LCDv3.h"
+#include "./lib/fonctions_sup.h"
 
 /******************************************************************************/
 /* Définition des équivalences                                                */
@@ -76,7 +77,7 @@
 /******************************************************************************/
 /* Global Variable Declaration                                                */
 /******************************************************************************/
-
+int contrast=52; //0 pour faible et 63 pour max
 
 /******************************************************************************/
 /* Routines d'interruptions                                                   */
@@ -104,35 +105,23 @@ void __attribute__((__interrupt__,no_auto_psv)) _T3Interrupt( void )
 /* Programme principal (main program)                                         */
 /******************************************************************************/
 
-//chat gpt code 1
-#define BUTTON1_PIN   PORTEbits.RE0  // Button 1 connected to RE0
-#define BUTTON2_PIN   PORTEbits.RE1  // Button 2 connected to RE1
-#define BUTTON3_PIN   PORTEbits.RE2  // Button 3 connected to RE2
-//end chat gpt code 1
-//chat gpt code 2
+//initialisation des pates RE0, RE1 et RE2 aux boutons 1, 2 et 3
+#define BUTTON1_PIN   PORTEbits.RE0  // Bouton 1 connecter a RE0
+#define BUTTON2_PIN   PORTEbits.RE1  // Bouton 2 connecter a RE1
+#define BUTTON3_PIN   PORTEbits.RE2  // Bouton 3 connecter a RE2
+
+//fonction d'initialisation des pins RE0, RE1, RE2
 void init_pins() {
-    TRISEbits.TRISE0 = 1; // Configure RE0 as an input for button 1
-    TRISEbits.TRISE1 = 1; // Configure RE1 as an input for button 2
-    TRISEbits.TRISE2 = 1; // Configure RE2 as an input for button 3
+    TRISEbits.TRISE0 = 1; // Configure RE0 comme une entree du bouton 1
+    TRISEbits.TRISE1 = 1; // Configure RE1 comme une entree du bouton 2
+    TRISEbits.TRISE2 = 1; // Configure RE2 comme une entree du bouton 3
+    //les 3 lignes de code suivantes sont utiliser pour activer les pull up resistors pour RE0, RE1 et RE2
     //LATEbits.LATE0 = 1;   // Enable pull-up resistor for RE0
     //LATEbits.LATE1 = 1;   // Enable pull-up resistor for RE1
     //LATEbits.LATE2 = 1;   // Enable pull-up resistor for RE2
 }
-//end chat gpt code 2
-//chat gpt code 3
-int detect_button_press(int button) {
-    switch(button) {
-        case 1:
-            return !BUTTON1_PIN; // If pin RE0 is low, then button 1 is pressed
-        case 2:
-            return !BUTTON2_PIN; // If pin RE1 is low, then button 2 is pressed
-        case 3:
-            return !BUTTON3_PIN; // If pin RE2 is low, then button 3 is pressed
-        default:
-            return 0; // Invalid button number
-    }
-}
-//end chat gpt code 3
+
+
 
 int16_t main(void)
 {
@@ -165,23 +154,26 @@ int16_t main(void)
     /* -----------------------------------------------------------------------*/
     init_pins();
     InitLCD();
+    
     int choix_men=0;
     
     LCDDisplayOn();
-    
+    LCDContrastSet(contrast);
     char chainedechar[] = "Bonjour le monde!!";         //affichage de bonjour le monde lentement
     for (int i=0;i<18;i++){
         _wait10mus(300000);
         LCDDataWrite(chainedechar[i]);
     }
-    //fonction de declanchement de l'interface du menue
+    //fonction de declanchement de l'interface du menu
     menu_principale();
+    //fin de la fonction menu
     
+    LCDClearDisplay();
+    LCDWriteStr(" Configurations ");
+    LCDGoto(1,0);
+    LCDWriteStr("  Mises a Jour  ");
     
-    
-    
-    
-    
+ 
     while(1)
     {
        
@@ -190,106 +182,6 @@ int16_t main(void)
 }
 
 
-void menu_principale()
-{
-    int counter_men=1, count_bout_1=0;
-    int choix=0;
-    do
-    {
-        LCDClearDisplay();
-        LCDWriteStr("   Bienvenue   ");
-        LCDGoto(1,0);
-        LCDWriteStr("       au       ");
-        LCDGoto(2,0);
-        LCDWriteStr("      menu      ");
-        _wait10mus(500000);
-        LCDClearDisplay();
-        do
-        {
-            int count_bout_2=0, count_bout_3=0, presser=1;
-            if(detect_button_press(1))
-            {
-                count_bout_1 += 1;
-            }
-            if(detect_button_press(2))
-            {
-                presser=count_bout_2 + 1;
-            }
-            if(detect_button_press(3))
-            {
-                presser=count_bout_3 + 1;
-            }
-            
-            if(presser%2=1)
-            {
-                LCDClearDisplay();
-                LCDWriteStr("1.Luminosite   X");
-                LCDGoto(1,0);
-                LCDWriteStr("2.Test Bouton");
-                choix = 1;
-                
-            }
-            if(count_bout_3%2=0)
-            {
-                LCDClearDisplay();
-                LCDWriteStr("1.Luminosite");
-                LCDGoto(1,0);
-                LCDWriteStr("2.Test Bouton  X");
-                choix = 2;
-            }
-         
-        }while(count_bout_1 == 1);
-        
-        if(choix=2)
-            {
-                do{
-                    if(detect_button_press(1)||detect_button_press(2)||detect_button_press(3)) {
-                        if(detect_button_press(1))
-                        {
-                            LCDGoto(0,0);
-                            LCDWriteStr("Button 1 = X");
-                            _wait10mus(300000);
-                        }
-                        if(detect_button_press(2))
-                        {
-                            LCDGoto(1,0);
-                            LCDWriteStr("Button 2 = X");
-                            _wait10mus(300000);
-                        }
-                        if(detect_button_press(3))
-                        {
-                            LCDGoto(2,0);
-                            LCDWriteStr("Button 3 = X");
-                            _wait10mus(300000);
-                        }
 
-
-                    }
-                    else if(!detect_button_press(1)||!detect_button_press(2)||!detect_button_press(3)) {
-                        LCDClearDisplay();
-                        LCDGoto(0,0);
-                        LCDWriteStr("Button 1 = 0");
-                        LCDGoto(1,0);
-                        LCDWriteStr("Button 2 = 0");
-                        LCDGoto(2,0);
-                        LCDWriteStr("Button 3 = 0");
-
-                        _wait10mus(300000);
-                    }
-                }while(detect_button_press(1)&&detect_button_press(2)&&detect_button_press(3));
-            }
-        if (choix=1)
-        {
-            LCDClearDisplay();
-            
-            
-            
-        }
-        
-        
-        
-        
-    }while(counter_men>10);
-    
-    
-}
+//watch this for simulations
+//https://www.youtube.com/watch?v=O4IpwgWhqLY&ab_channel=BinderTronics
