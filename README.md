@@ -32,6 +32,7 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
 
 * Travail Vacances (du 24/02/2024 au 02/03/2024):
       Finalisation du code menu (prototype)
+      Erreur de Build du code.
 
 
 
