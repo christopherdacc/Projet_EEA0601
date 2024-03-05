@@ -34,6 +34,10 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
       Finalisation du code menu (prototype)
       Erreur de Build du code.
 
+* Séance 5.3 test du code (05/03/2024):
+      Test du code et correction du build error.
+      Nouveau probleme code ne marche pas comme on veux.
+
 
 
 
