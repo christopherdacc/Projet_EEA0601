@@ -19,6 +19,10 @@ void menu_principale(int *contrast)
     int ptrcontrast = *contrast;
     int choix=0;                                    //si choix = 1 donc changement de luminosite si 2 test de bouton
                                                     //et si 3 sorti du menu
+    int presser=100;                                //presser=100 pour pouvoir appuyer
+                                                    //plusieur fois sur le + et le - sans 
+                                                    //avoir de nombres negatifes
+    int operation1 = presser%2;                     //operation pour savoir si presser est paire ou impaire
     do
     {                                               //PARTIE 1 MENU: (VISUEL)
         LCDClearDisplay();                          //Cette partie de code est une initialiation
@@ -28,13 +32,10 @@ void menu_principale(int *contrast)
         LCDGoto(2,0);
         LCDWriteStr("XXXXXXXXXXXXXXXX");
         _wait10mus(500000);
-        LCDClearDisplay();                          //FIN PARTIE 1 MENU
+                                                    //FIN PARTIE 1 MENU
         do                                          //PARTIE 2 MENU: (SELECTION)
         {                                           
-            int presser=100;                        //presser=100 pour pouvoir appuyer
-                                                    //plusieur fois sur le + et le - sans 
-                                                    //avoir de nombres negatifes
-            int operation1 = presser%2;             //operation pour savoir si presser est paire ou impaire
+             
             
             if (detect_button_press(2)&&detect_button_press(3)){//si bouton 2 et 3 appuyer en meme temps 
                 choix = 3;                                      //choix = 3 
@@ -50,7 +51,7 @@ void menu_principale(int *contrast)
             
             if(detect_button_press(2))              //lorsqu'on appuie sur le bouton 2
             {                                       //presser diminue de 1
-                presser -= 1;                       //variable presser pour l'affichage du selectionneur 'X'
+                presser = presser - 1;                       //variable presser pour l'affichage du selectionneur 'X'
             }
             if(detect_button_press(3))              //lorsqu'on appuie sur le bouton 3
             {                                       //presser augmente de 1

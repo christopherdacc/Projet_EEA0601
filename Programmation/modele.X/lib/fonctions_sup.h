@@ -4,4 +4,6 @@
 void menu_principale();
 int detect_button_press(int button);
 void loading_X_simulator(int *contrast);
+
+
 #endif
