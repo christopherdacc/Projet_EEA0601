@@ -77,7 +77,7 @@
 /******************************************************************************/
 /* Global Variable Declaration                                                */
 /******************************************************************************/
-int contrast=52; //0 pour faible et 63 pour max
+int contrast=32; //0 pour faible et 63 pour max
 
 /******************************************************************************/
 /* Routines d'interruptions                                                   */
@@ -161,11 +161,11 @@ int16_t main(void)
     LCDContrastSet(contrast);
     char chainedechar[] = "Bonjour le monde!!";         //affichage de bonjour le monde lentement
     for (int i=0;i<18;i++){
-        _wait10mus(300000);
+        _wait10mus(200000);
         LCDDataWrite(chainedechar[i]);
     }
     //fonction de declanchement de l'interface du menu
-    menu_principale();
+    menu_principale(&contrast);
     //fin de la fonction menu
     
     LCDClearDisplay();
