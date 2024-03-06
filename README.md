@@ -38,6 +38,11 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
       Test du code et correction du build error.
       Nouveau probleme code ne marche pas comme on veux.
 
+* Séance 6 (06/03/2024):
+      Correction du Schéma de la carte.
+      On a commencé a realisé la carte.
+      Un peut de modification du code pour qu'il marche (ne marche toujours pas).
+
 
 
 
