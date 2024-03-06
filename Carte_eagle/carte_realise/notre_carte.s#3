@@ -4742,14 +4742,14 @@ Distributeurs :&lt;br/&gt;
 </net>
 <net name="U1ATX_RC13" class="0">
 <segment>
-<pinref part="SV1" gate="1" pin="13"/>
-<wire x1="106.68" y1="58.42" x2="96.52" y2="58.42" width="0.1524" layer="91"/>
-<label x="91.44" y="58.42" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="CON1" gate="G$1" pin="2"/>
 <wire x1="116.84" y1="114.3" x2="116.84" y2="104.14" width="0.1524" layer="91"/>
 <label x="119.38" y="93.98" size="1.778" layer="95" rot="R90"/>
+</segment>
+<segment>
+<pinref part="SV1" gate="1" pin="5"/>
+<wire x1="106.68" y1="68.58" x2="96.52" y2="68.58" width="0.1524" layer="91"/>
+<label x="96.52" y="68.58" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="U1ARX_RC14" class="0">

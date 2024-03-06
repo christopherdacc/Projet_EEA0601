@@ -6767,9 +6767,6 @@ Distributeurs :&lt;br/&gt;
 <part name="BOUTON_B" library="switch-misc" deviceset="DT" device="6"/>
 <part name="BOUTON_N" library="switch-misc" deviceset="DT" device="6"/>
 <part name="BOUTON_R" library="switch-misc" deviceset="DT" device="6"/>
-<part name="R1_BOUT" library="rcl" deviceset="R-EU_" device="0207/10" value="10k"/>
-<part name="R2_BOUT" library="rcl" deviceset="R-EU_" device="0207/10" value="10k"/>
-<part name="R3_BOUT" library="rcl" deviceset="R-EU_" device="0207/10" value="10k"/>
 <part name="R_RETRO" library="rcl" deviceset="R-EU_" device="0207/15" value="33"/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="GND6" library="supply1" deviceset="GND" device=""/>
@@ -6805,9 +6802,6 @@ Distributeurs :&lt;br/&gt;
 <instance part="BOUTON_B" gate="1" x="182.88" y="43.18" rot="R270"/>
 <instance part="BOUTON_N" gate="1" x="182.88" y="63.5" rot="R270"/>
 <instance part="BOUTON_R" gate="1" x="182.88" y="83.82" rot="R270"/>
-<instance part="R1_BOUT" gate="G$1" x="165.1" y="43.18"/>
-<instance part="R2_BOUT" gate="G$1" x="165.1" y="63.5"/>
-<instance part="R3_BOUT" gate="G$1" x="162.56" y="83.82"/>
 <instance part="R_RETRO" gate="G$1" x="12.7" y="40.64" rot="R90"/>
 <instance part="GND5" gate="1" x="12.7" y="25.4"/>
 <instance part="GND6" gate="1" x="195.58" y="83.82" rot="R90"/>
@@ -6900,18 +6894,30 @@ Distributeurs :&lt;br/&gt;
 </segment>
 <segment>
 <pinref part="P+6" gate="1" pin="+5V"/>
-<pinref part="R3_BOUT" gate="G$1" pin="1"/>
-<wire x1="152.4" y1="83.82" x2="157.48" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="BOUTON_R" gate="1" pin="P"/>
+<wire x1="172.72" y1="83.82" x2="177.8" y2="83.82" width="0.1524" layer="91"/>
+<junction x="172.72" y="83.82"/>
+<wire x1="172.72" y1="78.74" x2="172.72" y2="83.82" width="0.1524" layer="91"/>
+<label x="172.72" y="78.74" size="1.778" layer="95"/>
+<wire x1="172.72" y1="83.82" x2="152.4" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+7" gate="1" pin="+5V"/>
-<pinref part="R2_BOUT" gate="G$1" pin="1"/>
-<wire x1="152.4" y1="63.5" x2="160.02" y2="63.5" width="0.1524" layer="91"/>
+<pinref part="BOUTON_N" gate="1" pin="P"/>
+<wire x1="172.72" y1="63.5" x2="177.8" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="172.72" y1="58.42" x2="172.72" y2="63.5" width="0.1524" layer="91"/>
+<junction x="172.72" y="63.5"/>
+<label x="172.72" y="58.42" size="1.778" layer="95"/>
+<wire x1="172.72" y1="63.5" x2="152.4" y2="63.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+8" gate="1" pin="+5V"/>
-<pinref part="R1_BOUT" gate="G$1" pin="1"/>
-<wire x1="152.4" y1="43.18" x2="160.02" y2="43.18" width="0.1524" layer="91"/>
+<pinref part="BOUTON_B" gate="1" pin="P"/>
+<wire x1="172.72" y1="43.18" x2="177.8" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="172.72" y1="38.1" x2="172.72" y2="43.18" width="0.1524" layer="91"/>
+<junction x="172.72" y="43.18"/>
+<label x="172.72" y="38.1" size="1.778" layer="95"/>
+<wire x1="172.72" y1="43.18" x2="152.4" y2="43.18" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+9" gate="1" pin="+5V"/>
@@ -7072,15 +7078,6 @@ Distributeurs :&lt;br/&gt;
 <wire x1="121.92" y1="55.88" x2="137.16" y2="55.88" width="0.1524" layer="91"/>
 <label x="121.92" y="55.88" size="1.778" layer="95"/>
 </segment>
-<segment>
-<pinref part="BOUTON_R" gate="1" pin="P"/>
-<pinref part="R3_BOUT" gate="G$1" pin="2"/>
-<wire x1="167.64" y1="83.82" x2="172.72" y2="83.82" width="0.1524" layer="91"/>
-<wire x1="172.72" y1="83.82" x2="177.8" y2="83.82" width="0.1524" layer="91"/>
-<junction x="172.72" y="83.82"/>
-<wire x1="172.72" y1="78.74" x2="172.72" y2="83.82" width="0.1524" layer="91"/>
-<label x="172.72" y="78.74" size="1.778" layer="95"/>
-</segment>
 </net>
 <net name="U1ATX_RC13" class="0">
 <segment>
@@ -7112,30 +7109,12 @@ Distributeurs :&lt;br/&gt;
 <wire x1="121.92" y1="53.34" x2="137.16" y2="53.34" width="0.1524" layer="91"/>
 <label x="121.92" y="53.34" size="1.778" layer="95"/>
 </segment>
-<segment>
-<pinref part="R2_BOUT" gate="G$1" pin="2"/>
-<pinref part="BOUTON_N" gate="1" pin="P"/>
-<wire x1="170.18" y1="63.5" x2="172.72" y2="63.5" width="0.1524" layer="91"/>
-<wire x1="172.72" y1="63.5" x2="177.8" y2="63.5" width="0.1524" layer="91"/>
-<wire x1="172.72" y1="58.42" x2="172.72" y2="63.5" width="0.1524" layer="91"/>
-<junction x="172.72" y="63.5"/>
-<label x="172.72" y="58.42" size="1.778" layer="95"/>
-</segment>
 </net>
 <net name="RE0_BOUT_B" class="0">
 <segment>
 <pinref part="SV1" gate="1" pin="20"/>
 <wire x1="121.92" y1="50.8" x2="137.16" y2="50.8" width="0.1524" layer="91"/>
 <label x="121.92" y="50.8" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="R1_BOUT" gate="G$1" pin="2"/>
-<pinref part="BOUTON_B" gate="1" pin="P"/>
-<wire x1="170.18" y1="43.18" x2="172.72" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="172.72" y1="43.18" x2="177.8" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="172.72" y1="38.1" x2="172.72" y2="43.18" width="0.1524" layer="91"/>
-<junction x="172.72" y="43.18"/>
-<label x="172.72" y="38.1" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
