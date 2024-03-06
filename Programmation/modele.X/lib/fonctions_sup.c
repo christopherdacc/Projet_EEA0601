@@ -1,11 +1,22 @@
 #include <xc.h>
-#include <stdbool.h>
+
+#include <stdint.h>             /* Includes uint16_t definition               */
+#include <stdbool.h>            /* Includes true/false definition             */
+#include "periph_gen.h"
+#include "periph_tmr.h"
+#include "periph_pwm.h"
+#include "LCDv3.h"
 #include "fonctions_sup.h"
 
-void menu_principale()
+#define BUTTON1_PIN   PORTEbits.RE0  // Bouton 1 connecter a RE0
+#define BUTTON2_PIN   PORTEbits.RE1  // Bouton 2 connecter a RE1
+#define BUTTON3_PIN   PORTEbits.RE2  // Bouton 3 connecter a RE2
+
+void menu_principale(int *contrast)
 {
     int exit_menu=0,count_bout_1=0;                 //exit_menu variable et condition poir la condition de sortie
                                                     //du menu
+    int ptrcontrast = *contrast;
     int choix=0;                                    //si choix = 1 donc changement de luminosite si 2 test de bouton
                                                     //et si 3 sorti du menu
     do
@@ -120,22 +131,22 @@ void menu_principale()
             LCDWriteStr("B1=OK/B2=-/B3=+");
             do {
                 if (detect_button_press(3)){        //si on appuie sur le bouton 3 on augmente la luminosite de 4
-                    contrast +=4;                   
-                    if (contrast>64){
-                        contrast = 64;
+                    ptrcontrast +=4;                   
+                    if (ptrcontrast>64){
+                        ptrcontrast = 64;
                     }
-                    loading_X_simulator(&contrast); //donc on va ajouter un X a l'aide de cette fonction
+                    loading_X_simulator(&ptrcontrast); //donc on va ajouter un X a l'aide de cette fonction
                 }
                 if (detect_button_press(2)){        //si on appuie sur le bouton 2 on diminue la luminosite de 4
-                    contrast -=4;
-                    if (contrast<0){
-                        contrast = 0;
+                    ptrcontrast -=4;
+                    if (ptrcontrast<0){
+                        ptrcontrast = 0;
                     }
-                    loading_X_simulator(&contrast); //donc on va retirer un X a l'aide de cette fonction
+                    loading_X_simulator(&ptrcontrast); //donc on va retirer un X a l'aide de cette fonction
                 }
             }while (detect_button_press(1));        //cette boucle restera valide jusqu'a ce qu'on appuie sur le 
                                                     //bouton 1 == SET/OK
-            LCDContrastSet(contrast);               //apres avoir sorti de la boucle contrast a changer 
+            LCDContrastSet(ptrcontrast);               //apres avoir sorti de la boucle contrast a changer 
         }                                           //et la luminosite et mise a cette valeur
         
         if (choix == 3){                            //si on a appuyer sur les boutons 2 et 3 ensemble 
@@ -162,7 +173,7 @@ int detect_button_press(int button) {
 
 void loading_X_simulator(int *contrast){
     int num_of_X;
-    num_of_X= contrast/4;
+    num_of_X= *contrast/4;
     char chainedechar[] = "XXXXXXXXXXXXXXXX";
     for (int i=0;i<num_of_X;i++){
         _wait10mus(300000);
