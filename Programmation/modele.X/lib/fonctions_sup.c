@@ -14,8 +14,8 @@
 
 void menu_principale(int *contrast)
 {
-    int exit_menu=0,count_bout_1=0;                 //exit_menu variable et condition poir la condition de sortie
-                                                    //du menu
+    int exit_menu=0;                                //exit_menu variable et condition poir la condition de sortie
+    int count_bout_1=0;                             //du menu
     int ptrcontrast = *contrast;
     int choix=0;                                    //si choix = 1 donc changement de luminosite si 2 test de bouton
                                                     //et si 3 sorti du menu
@@ -23,16 +23,19 @@ void menu_principale(int *contrast)
                                                     //plusieur fois sur le + et le - sans 
                                                     //avoir de nombres negatifes
     int operation1 = presser%2;                     //operation pour savoir si presser est paire ou impaire
+                                                
+    LCDClearDisplay();                              //PARTIE 1 MENU: (VISUEL)
+    LCDWriteStr("XXXXXXXXXXXXXXXX");                //Cette partie de code est une initialiation
+    LCDGoto(1,0);                                   //visuel au menue
+    LCDWriteStr("XXXXX MENU XXXXX");
+    LCDGoto(2,0);
+    LCDWriteStr("XXXXXXXXXXXXXXXX");
+    _wait10mus(500000);                             //FIN PARTIE 1 MENU
+    LCDClearDisplay();                                                
+    
+    
     do
-    {                                               //PARTIE 1 MENU: (VISUEL)
-        LCDClearDisplay();                          //Cette partie de code est une initialiation
-        LCDWriteStr("XXXXXXXXXXXXXXXX");            //visuel au menue
-        LCDGoto(1,0);
-        LCDWriteStr("XXXXX MENU XXXXX");
-        LCDGoto(2,0);
-        LCDWriteStr("XXXXXXXXXXXXXXXX");
-        _wait10mus(500000);
-                                                    //FIN PARTIE 1 MENU
+    {   
         do                                          //PARTIE 2 MENU: (SELECTION)
         {                                           
              
@@ -50,34 +53,40 @@ void menu_principale(int *contrast)
             }                                       //a la variable choix
             
             if(detect_button_press(2))              //lorsqu'on appuie sur le bouton 2
-            {                                       //presser diminue de 1
-                presser = presser - 1;                       //variable presser pour l'affichage du selectionneur 'X'
+            {
+                LCDClearDisplay();                  //presser diminue de 1
+                presser = presser - 1;              //variable presser pour l'affichage du selectionneur 'X'
             }
             if(detect_button_press(3))              //lorsqu'on appuie sur le bouton 3
-            {                                       //presser augmente de 1
+            {
+                LCDClearDisplay();                  //presser augmente de 1
                 presser += 1;                       //variable presser pour l'affichage du selectionneur 'X'
             }
             
-            if(operation1==0)                       //le cas ou presser est paire on affiche le selecteur 'X'
+            if((presser%2)==0)                       //le cas ou presser est paire on affiche le selecteur 'X'
             {                                       //a cote de l'option Luminosite
-                LCDClearDisplay();
+                LCDGoto(0,0);
                 LCDWriteStr("1.Luminosite   X");
                 LCDGoto(1,0);
-                LCDWriteStr("2.Test Bouton");
+                LCDWriteStr("2.Test Bouton   ");
+                LCDGoto(2,0);
+                LCDWriteStr("B1=OK/B2=-/B3=+ ");
                 choix = 1;                          //et on donne a choix la valeur 1 qui nous permetra 
             }                                       //de dire que choix 1 = changement de luminosite
-            if(operation1==1)                       //le cas ou presser est impaire on affiche le selecteur 'X'
+            if((presser%2)==1)                       //le cas ou presser est impaire on affiche le selecteur 'X'
             {                                       //a cote de l'option test de boutons
-                LCDClearDisplay();
-                LCDWriteStr("1.Luminosite");
+                LCDGoto(0,0);
+                LCDWriteStr("1.Luminosite    ");
                 LCDGoto(1,0);
                 LCDWriteStr("2.Test Bouton  X");
+                LCDGoto(2,0);
+                LCDWriteStr("B1=OK/B2=-/B3=+ ");
                 choix = 2;                          //et on donne a choix la valeur 2 qui nous permetra 
             }                                       //de dire que le choix 2 = test de bouons 
          
-        }while(count_bout_1 == 1);                  //la boucle se termine lorsqu'on appuie sur le bouton 1
+        }while(count_bout_1 <= 2);                  //la boucle se termine lorsqu'on appuie sur le bouton 1
                                                     //qui est le bouton SET ou OK
-        
+        LCDClearDisplay();
                                                     //FIN PARTIE 2 MENU
         
         if(choix==2)                                 //PARTIE 3 MENU: (CAS DE TEST DE BOUTON)
