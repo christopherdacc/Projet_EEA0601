@@ -43,6 +43,10 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
       On a commencé a realisé la carte.
       Un peut de modification du code pour qu'il marche (ne marche toujours pas).
 
+* Séance 6.1 sup (07/03/2024):
+      Correction de l'affichage du menu (sélection de choix marche bien mais les choix ne marchent pas a 100%)
+       
+
 
 
 
