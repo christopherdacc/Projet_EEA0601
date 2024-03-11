@@ -121,8 +121,6 @@ void init_pins() {
     //LATEbits.LATE2 = 1;   // Enable pull-up resistor for RE2
 }
 
-
-
 int16_t main(void)
 {
     /* -----------------------------------------------------------------------*/
@@ -138,8 +136,6 @@ int16_t main(void)
     
     //Configurqtion du port E
     
-    
-    
     // Initialisation timer 3 - interruption à la milliseconde
     //InitTimer3(TIMEBASE);    // Initialisation du timer 3
    // Timer3InterruptEnable(); // Autorisation de l'interruption liée au timer 3
@@ -152,18 +148,21 @@ int16_t main(void)
     /* -----------------------------------------------------------------------*/
     /* Code principal de l'application                                                  */
     /* -----------------------------------------------------------------------*/
-    init_pins();
-    InitLCD();
+    init_pins();                        //initialisation des pins
+    InitLCD();                          //initialisation de l'ecran
     
     int choix_men=0;
     
-    LCDDisplayOn();
-    LCDContrastSet(contrast);
-    char chainedechar[] = "Bonjour le monde!!";         //affichage de bonjour le monde lentement
-    for (int i=0;i<18;i++){
-        _wait10mus(200000);
-        LCDDataWrite(chainedechar[i]);
-    }
+    LCDDisplayOn();                     //on allume l'ecran
+    LCDContrastSet(contrast);           //on defini la luminosite avec contrast 
+    LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+    LCDWriteStr("XXXXXXXXXXXXXXXX");
+    LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+    LCDWriteStr("XX Demarrage! XX");
+    LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+    LCDWriteStr("XXXXXXXXXXXXXXXX");
+    delay_en_s(5);                         //pause de 5s    
+    
     //fonction de declanchement de l'interface du menu
     menu_principale(&contrast);
     //fin de la fonction menu
