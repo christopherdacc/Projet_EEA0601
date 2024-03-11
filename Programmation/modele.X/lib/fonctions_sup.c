@@ -30,7 +30,8 @@ void menu_principale(int *contrast)
     LCDWriteStr("XXXXX MENU XXXXX");
     LCDGoto(2,0);
     LCDWriteStr("XXXXXXXXXXXXXXXX");
-    _wait10mus(500000);                             //FIN PARTIE 1 MENU
+    delay_en_s(1);
+    //_wait10mus(500000);                             //FIN PARTIE 1 MENU
     LCDClearDisplay();                                                
     
     
@@ -38,20 +39,14 @@ void menu_principale(int *contrast)
     {   
         do                                          //PARTIE 2 MENU: (SELECTION)
         {                                           
-             
-            
             if (detect_button_press(2)&&detect_button_press(3)){//si bouton 2 et 3 appuyer en meme temps 
                 choix = 3;                                      //choix = 3 
                 break;                                          //et on sort du menu
             }
-            
-            
-            
             if(detect_button_press(1))              //lorsqu'on appuie sur le bouton 1 
             {                                       //count_bout_1 augmente de 1, ceci va nous permetre
                 count_bout_1 += 1;                  //de selection une option du menu par rapport 
             }                                       //a la variable choix
-            
             if(detect_button_press(2))              //lorsqu'on appuie sur le bouton 2
             {
                 LCDClearDisplay();                  //presser diminue de 1
@@ -62,7 +57,6 @@ void menu_principale(int *contrast)
                 LCDClearDisplay();                  //presser augmente de 1
                 presser += 1;                       //variable presser pour l'affichage du selectionneur 'X'
             }
-            
             if((presser%2)==0)                       //le cas ou presser est paire on affiche le selecteur 'X'
             {                                       //a cote de l'option Luminosite
                 LCDGoto(0,0);
@@ -84,7 +78,7 @@ void menu_principale(int *contrast)
                 choix = 2;                          //et on donne a choix la valeur 2 qui nous permetra 
             }                                       //de dire que le choix 2 = test de bouons 
          
-        }while(count_bout_1 <= 2);                  //la boucle se termine lorsqu'on appuie sur le bouton 1
+        }while(count_bout_1 < 1);                  //la boucle se termine lorsqu'on appuie sur le bouton 1
                                                     //qui est le bouton SET ou OK
         LCDClearDisplay();
                                                     //FIN PARTIE 2 MENU
@@ -99,19 +93,22 @@ void menu_principale(int *contrast)
                         {
                             LCDGoto(0,0);           
                             LCDWriteStr("Button 1 = X");//un 'X' sera afficher a cote de Bouton 1
-                            _wait10mus(300000);
+                            //_wait10mus(300000);
+                            delay_en_s(3);
                         }
                         if(detect_button_press(2))  //si bouton 2 appuyer
                         {
                             LCDGoto(1,0);
                             LCDWriteStr("Button 2 = X");//un 'X' sera afficher a cote de Bouton 2
-                            _wait10mus(300000);
+                            //_wait10mus(300000);
+                            delay_en_s(3);
                         }
                         if(detect_button_press(3))  //si bouton 3 appuyer
                         {
                             LCDGoto(2,0);
                             LCDWriteStr("Button 3 = X");//un 'X' sera afficher a cote de Bouton 3
-                            _wait10mus(300000);
+                            //_wait10mus(300000);
+                            delay_en_s(3);
                         }
 
 
@@ -125,7 +122,8 @@ void menu_principale(int *contrast)
                         LCDGoto(2,0);
                         LCDWriteStr("Button 3 = 0");
 
-                        _wait10mus(300000);
+                        //_wait10mus(300000);
+                        delay_en_s(3);
                     }//cetter boucle se repetra jusqu'a ce qu'on appui sur les 3 boutons en meme temps
                 }while(detect_button_press(1)&&detect_button_press(2)&&detect_button_press(3));
                                                     //FIN PARTIE 3 MENU
@@ -186,7 +184,14 @@ void loading_X_simulator(int *contrast){
     num_of_X= *contrast/4;
     char chainedechar[] = "XXXXXXXXXXXXXXXX";
     for (int i=0;i<num_of_X;i++){
-        _wait10mus(300000);
         LCDDataWrite(chainedechar[i]);
+    }
+}
+void delay_en_s(int time) {
+    
+    int looper;
+    looper = time*1000;
+    for (int i = 0; i < looper; i++) { // Each iteration waits for 10ms
+        _wait10mus(100); // 100 * 10 µs = 1000 µs = 1 ms
     }
 }
