@@ -45,6 +45,10 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
 
 * Séance 6.1 sup (07/03/2024):
       Correction de l'affichage du menu (sélection de choix marche bien mais les choix ne marchent pas a 100%)
+
+* Séance 6.2 sup (11/03/2024):
+      Correction de la fonction délai.
+      Travail sur le compte rendu.
        
 
 
