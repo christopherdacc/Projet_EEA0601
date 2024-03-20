@@ -49,6 +49,13 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
 * Séance 6.2 sup (11/03/2024):
       Correction de la fonction délai.
       Travail sur le compte rendu.
+
+* Séance 7 (13/03/2024):
+      On a continué le routage des pistes
+      On a changer les pates des boutons et de l'ecran pour mettre les pates des boutons sur les pates CN qui permettent les interuptions sur front
+  
+* Séance 8 (20/03/2024):
+        
        
 
 
