@@ -13421,94 +13421,46 @@ Microcontrôleurs, boutons)</text>
 <pinref part="GND13" gate="1" pin="GND"/>
 </segment>
 </net>
-<net name="RB4_SDO" class="0">
-<segment>
-<pinref part="SV1" gate="1" pin="9"/>
-<wire x1="55.88" y1="12.7" x2="53.34" y2="12.7" width="0.1524" layer="91"/>
-<label x="53.34" y="12.7" size="1.778" layer="95" rot="MR0"/>
-</segment>
-<segment>
-<pinref part="U1" gate="G$1" pin="D7"/>
-<wire x1="76.2" y1="55.88" x2="81.28" y2="55.88" width="0.1524" layer="91"/>
-<label x="81.28" y="55.88" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="RB3_CLK" class="0">
-<segment>
-<pinref part="SV1" gate="1" pin="11"/>
-<wire x1="55.88" y1="10.16" x2="53.34" y2="10.16" width="0.1524" layer="91"/>
-<label x="53.34" y="10.16" size="1.778" layer="95" rot="MR0"/>
-</segment>
-<segment>
-<pinref part="U1" gate="G$1" pin="D6"/>
-<wire x1="76.2" y1="53.34" x2="81.28" y2="53.34" width="0.1524" layer="91"/>
-<label x="81.28" y="53.34" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="RB1_!CSB" class="0">
-<segment>
-<pinref part="SV1" gate="1" pin="15"/>
-<wire x1="55.88" y1="5.08" x2="53.34" y2="5.08" width="0.1524" layer="91"/>
-<label x="53.34" y="5.08" size="1.778" layer="95" rot="MR0"/>
-</segment>
-<segment>
-<pinref part="U1" gate="G$1" pin="CSB"/>
-<wire x1="76.2" y1="63.5" x2="81.28" y2="63.5" width="0.1524" layer="91"/>
-<label x="81.28" y="63.5" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="RB0_RS" class="0">
-<segment>
-<pinref part="SV1" gate="1" pin="17"/>
-<wire x1="55.88" y1="2.54" x2="53.34" y2="2.54" width="0.1524" layer="91"/>
-<label x="53.34" y="2.54" size="1.778" layer="95" rot="MR0"/>
-</segment>
-<segment>
-<pinref part="U1" gate="G$1" pin="RS"/>
-<wire x1="76.2" y1="60.96" x2="81.28" y2="60.96" width="0.1524" layer="91"/>
-<label x="81.28" y="60.96" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="RE2_BOUT_R" class="0">
-<segment>
-<pinref part="SV1" gate="1" pin="16"/>
-<wire x1="71.12" y1="5.08" x2="73.66" y2="5.08" width="0.1524" layer="91"/>
-<label x="73.66" y="5.08" size="1.778" layer="95"/>
-</segment>
+<net name="RB0_BOUT_R" class="0">
 <segment>
 <wire x1="170.18" y1="78.74" x2="172.72" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="172.72" y1="78.74" x2="172.72" y2="66.04" width="0.1524" layer="91"/>
 <label x="170.18" y="78.74" size="1.778" layer="95" rot="MR0"/>
 <pinref part="BOUTON_R" gate="1" pin="P"/>
 </segment>
-</net>
-<net name="RE1_BOUT_N" class="0">
 <segment>
-<pinref part="SV1" gate="1" pin="18"/>
-<wire x1="71.12" y1="2.54" x2="73.66" y2="2.54" width="0.1524" layer="91"/>
-<label x="73.66" y="2.54" size="1.778" layer="95"/>
+<pinref part="SV1" gate="1" pin="17"/>
+<wire x1="55.88" y1="2.54" x2="53.34" y2="2.54" width="0.1524" layer="91"/>
+<label x="38.1" y="2.54" size="1.778" layer="95"/>
 </segment>
+</net>
+<net name="RB1_BOUT_N" class="0">
 <segment>
 <pinref part="BOUTON_N" gate="1" pin="P"/>
 <wire x1="152.4" y1="66.04" x2="152.4" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="152.4" y1="78.74" x2="149.86" y2="78.74" width="0.1524" layer="91"/>
 <label x="134.62" y="78.74" size="1.778" layer="95"/>
 </segment>
-</net>
-<net name="RE0_BOUT_B" class="0">
 <segment>
-<pinref part="SV1" gate="1" pin="20"/>
-<wire x1="71.12" y1="0" x2="73.66" y2="0" width="0.1524" layer="91"/>
-<label x="73.66" y="0" size="1.778" layer="95"/>
+<pinref part="SV1" gate="1" pin="15"/>
+<wire x1="55.88" y1="5.08" x2="53.34" y2="5.08" width="0.1524" layer="91"/>
+<label x="38.1" y="5.08" size="1.778" layer="95"/>
 </segment>
+</net>
+<net name="RB2_BOUT_B" class="0">
 <segment>
 <pinref part="BOUTON_B" gate="1" pin="P"/>
 <wire x1="132.08" y1="66.04" x2="132.08" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="132.08" y1="78.74" x2="129.54" y2="78.74" width="0.1524" layer="91"/>
 <label x="114.3" y="78.74" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="SV1" gate="1" pin="13"/>
+<wire x1="55.88" y1="7.62" x2="53.34" y2="7.62" width="0.1524" layer="91"/>
+<label x="38.1" y="7.62" size="1.778" layer="95"/>
+</segment>
 </net>
-<net name="N$1" class="0">
+<net name="RHETRO_RES" class="0">
 <segment>
 <pinref part="R_RETRO" gate="G$1" pin="1"/>
 <wire x1="25.4" y1="50.8" x2="25.4" y2="48.26" width="0.1524" layer="91"/>
@@ -13543,6 +13495,54 @@ Microcontrôleurs, boutons)</text>
 <pinref part="CON2" gate="G$1" pin="2"/>
 <wire x1="144.78" y1="0" x2="152.4" y2="0" width="0.1524" layer="91"/>
 <label x="152.4" y="0" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="RE1_!CSB" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="CSB"/>
+<wire x1="76.2" y1="63.5" x2="81.28" y2="63.5" width="0.1524" layer="91"/>
+<label x="81.28" y="63.5" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="SV1" gate="1" pin="18"/>
+<wire x1="71.12" y1="2.54" x2="73.66" y2="2.54" width="0.1524" layer="91"/>
+<label x="73.66" y="2.54" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="RE0_RS" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="RS"/>
+<wire x1="76.2" y1="60.96" x2="81.28" y2="60.96" width="0.1524" layer="91"/>
+<label x="81.28" y="60.96" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="SV1" gate="1" pin="20"/>
+<wire x1="71.12" y1="0" x2="73.66" y2="0" width="0.1524" layer="91"/>
+<label x="73.66" y="0" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="RE4_SDO" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="D7"/>
+<wire x1="76.2" y1="55.88" x2="81.28" y2="55.88" width="0.1524" layer="91"/>
+<label x="81.28" y="55.88" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="SV1" gate="1" pin="12"/>
+<wire x1="71.12" y1="10.16" x2="73.66" y2="10.16" width="0.1524" layer="91"/>
+<label x="73.66" y="10.16" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="RE3_CLK" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="D6"/>
+<wire x1="76.2" y1="53.34" x2="81.28" y2="53.34" width="0.1524" layer="91"/>
+<label x="81.28" y="53.34" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="SV1" gate="1" pin="14"/>
+<wire x1="71.12" y1="7.62" x2="73.66" y2="7.62" width="0.1524" layer="91"/>
+<label x="73.66" y="7.62" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
