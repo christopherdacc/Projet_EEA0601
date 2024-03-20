@@ -30,31 +30,31 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
 * Séance 5.2 sup (23/02/2024):
       Début de la programmation d'un menu avec les options de test des boutons et changement de l'éclairage de l'écran.
 
-* Travail Vacances (du 24/02/2024 au 02/03/2024):
+* Travail Vacances 6 (du 24/02/2024 au 02/03/2024):
       Finalisation du code menu (prototype)
       Erreur de Build du code.
 
-* Séance 5.3 test du code (05/03/2024):
+* Séance 6.1 test du code (05/03/2024):
       Test du code et correction du build error.
       Nouveau probleme code ne marche pas comme on veux.
 
-* Séance 6 (06/03/2024):
+* Séance 7 (06/03/2024):
       Correction du Schéma de la carte.
       On a commencé a realisé la carte.
       Un peut de modification du code pour qu'il marche (ne marche toujours pas).
 
-* Séance 6.1 sup (07/03/2024):
+* Séance 7.1 sup (07/03/2024):
       Correction de l'affichage du menu (sélection de choix marche bien mais les choix ne marchent pas a 100%)
 
-* Séance 6.2 sup (11/03/2024):
+* Séance 7.2 sup (11/03/2024):
       Correction de la fonction délai.
       Travail sur le compte rendu.
 
-* Séance 7 (13/03/2024):
+* Séance 8 (13/03/2024):
       On a continué le routage des pistes.
       On a changer les pates des boutons et de l'ecran pour mettre les pates des boutons sur les pates CN qui permettent les interuptions sur front.
   
-* Séance 8 (20/03/2024):
+* Séance 9 (20/03/2024):
       On a finit la carte électronique avec le dimentionnement des pistes de +5V (0.05 inch) et pistes de signaux (0.024).
       On a cassé les angles et tout ca pour evité le rayonnement electromagnetique.
        
