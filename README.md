@@ -57,7 +57,9 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
 * Séance 9 (20/03/2024):
       On a finit la carte électronique avec le dimentionnement des pistes de +5V (0.05 inch) et pistes de signaux (0.024).
       On a cassé les angles et tout ca pour evité le rayonnement electromagnetique.
-       
+
+* Séance 10 (27/03/2024):
+        
 
 
 
