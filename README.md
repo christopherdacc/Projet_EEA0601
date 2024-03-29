@@ -59,6 +59,12 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
       On a cassé les angles et tout ca pour evité le rayonnement electromagnetique.
 
 * Séance 10 (27/03/2024):
+      On a percé la carte pour pouvoir souder les composants decu.
+
+* Séance 10.1 sup (28/03/2024):
+      On a réalisé le test de continuité a l'ohm mètre.
+      On a resouder une piste défectueuse.
+      On a souder tout les composants sur la carte.
         
 
 
