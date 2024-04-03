@@ -8,9 +8,9 @@
 #include "LCDv3.h"
 #include "fonctions_sup.h"
 
-#define BUTTON1_PIN   PORTEbits.RE0  // Bouton 1 connecter a RE0
-#define BUTTON2_PIN   PORTEbits.RE1  // Bouton 2 connecter a RE1
-#define BUTTON3_PIN   PORTEbits.RE2  // Bouton 3 connecter a RE2
+#define BUTTON1_PIN   PORTBbits.RB0  // Bouton 1 connecter a RB0
+#define BUTTON2_PIN   PORTBbits.RB1  // Bouton 2 connecter a RB1
+#define BUTTON3_PIN   PORTBbits.RB2  // Bouton 3 connecter a RB2
 
 void menu_principale(int *contrast)
 {
@@ -30,8 +30,7 @@ void menu_principale(int *contrast)
     LCDWriteStr("XXXXX MENU XXXXX");
     LCDGoto(2,0);
     LCDWriteStr("XXXXXXXXXXXXXXXX");
-    delay_en_s(1);
-    //_wait10mus(500000);                             //FIN PARTIE 1 MENU
+    delay_en_s(1);                                  //FIN PARTIE 1 MENU
     LCDClearDisplay();                                                
     
     
@@ -94,21 +93,21 @@ void menu_principale(int *contrast)
                             LCDGoto(0,0);           
                             LCDWriteStr("Button 1 = X");//un 'X' sera afficher a cote de Bouton 1
                             //_wait10mus(300000);
-                            delay_en_s(3);
+                            //delay_en_s(3);
                         }
                         if(detect_button_press(2))  //si bouton 2 appuyer
                         {
                             LCDGoto(1,0);
                             LCDWriteStr("Button 2 = X");//un 'X' sera afficher a cote de Bouton 2
                             //_wait10mus(300000);
-                            delay_en_s(3);
+                            //delay_en_s(3);
                         }
                         if(detect_button_press(3))  //si bouton 3 appuyer
                         {
                             LCDGoto(2,0);
                             LCDWriteStr("Button 3 = X");//un 'X' sera afficher a cote de Bouton 3
                             //_wait10mus(300000);
-                            delay_en_s(3);
+                            //delay_en_s(3);
                         }
 
 
@@ -123,7 +122,7 @@ void menu_principale(int *contrast)
                         LCDWriteStr("Button 3 = 0");
 
                         //_wait10mus(300000);
-                        delay_en_s(3);
+                        //delay_en_s(3);
                     }//cetter boucle se repetra jusqu'a ce qu'on appui sur les 3 boutons en meme temps
                 }while(detect_button_press(1)&&detect_button_press(2)&&detect_button_press(3));
                                                     //FIN PARTIE 3 MENU
@@ -187,7 +186,7 @@ void loading_X_simulator(int *contrast){
         LCDDataWrite(chainedechar[i]);
     }
 }
-void delay_en_s(int time) {
+void delay_en_s(float time) {
     
     int looper;
     looper = time*1000;

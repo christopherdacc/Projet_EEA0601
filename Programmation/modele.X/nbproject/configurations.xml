@@ -9,6 +9,7 @@
       <itemPath>lib/periph_tmr.h</itemPath>
       <itemPath>lib/LCDv3.h</itemPath>
       <itemPath>lib/periph_adc.h</itemPath>
+      <itemPath>lib/fonctions_sup.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -22,6 +23,7 @@
       <itemPath>lib/periph_tmr.c</itemPath>
       <itemPath>lib/LCDv3.c</itemPath>
       <itemPath>lib/periph_adc.c</itemPath>
+      <itemPath>lib/fonctions_sup.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c lib/periph_pwm.c lib/periph_tmr.c lib/LCDv3.c lib/periph_adc.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c lib/periph_pwm.c lib/periph_tmr.c lib/LCDv3.c lib/periph_adc.c lib/fonctions_sup.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/lib/periph_pwm.o ${OBJECTDIR}/lib/periph_tmr.o ${OBJECTDIR}/lib/LCDv3.o ${OBJECTDIR}/lib/periph_adc.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/lib/periph_pwm.o.d ${OBJECTDIR}/lib/periph_tmr.o.d ${OBJECTDIR}/lib/LCDv3.o.d ${OBJECTDIR}/lib/periph_adc.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/lib/periph_pwm.o ${OBJECTDIR}/lib/periph_tmr.o ${OBJECTDIR}/lib/LCDv3.o ${OBJECTDIR}/lib/periph_adc.o ${OBJECTDIR}/lib/fonctions_sup.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/lib/periph_pwm.o.d ${OBJECTDIR}/lib/periph_tmr.o.d ${OBJECTDIR}/lib/LCDv3.o.d ${OBJECTDIR}/lib/periph_adc.o.d ${OBJECTDIR}/lib/fonctions_sup.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/lib/periph_pwm.o ${OBJECTDIR}/lib/periph_tmr.o ${OBJECTDIR}/lib/LCDv3.o ${OBJECTDIR}/lib/periph_adc.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/lib/periph_pwm.o ${OBJECTDIR}/lib/periph_tmr.o ${OBJECTDIR}/lib/LCDv3.o ${OBJECTDIR}/lib/periph_adc.o ${OBJECTDIR}/lib/fonctions_sup.o
 
 # Source Files
-SOURCEFILES=main.c lib/periph_pwm.c lib/periph_tmr.c lib/LCDv3.c lib/periph_adc.c
+SOURCEFILES=main.c lib/periph_pwm.c lib/periph_tmr.c lib/LCDv3.c lib/periph_adc.c lib/fonctions_sup.c
 
 
 
@@ -125,6 +125,12 @@ ${OBJECTDIR}/lib/periph_adc.o: lib/periph_adc.c  .generated_files/flags/XC16_dsP
 	@${RM} ${OBJECTDIR}/lib/periph_adc.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib/periph_adc.c  -o ${OBJECTDIR}/lib/periph_adc.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib/periph_adc.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD4=1    -omf=elf -DXPRJ_XC16_dsPIC30F4012=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
+${OBJECTDIR}/lib/fonctions_sup.o: lib/fonctions_sup.c  .generated_files/flags/XC16_dsPIC30F4012/be10c6d0fb9b957214da59e03f0b689c74df125e .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
+	@${MKDIR} "${OBJECTDIR}/lib" 
+	@${RM} ${OBJECTDIR}/lib/fonctions_sup.o.d 
+	@${RM} ${OBJECTDIR}/lib/fonctions_sup.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib/fonctions_sup.c  -o ${OBJECTDIR}/lib/fonctions_sup.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib/fonctions_sup.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD4=1    -omf=elf -DXPRJ_XC16_dsPIC30F4012=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
 else
 ${OBJECTDIR}/main.o: main.c  .generated_files/flags/XC16_dsPIC30F4012/6aa1d307360c2825f67f39d052b6204d0abe0807 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
 	@${MKDIR} "${OBJECTDIR}" 
@@ -155,6 +161,12 @@ ${OBJECTDIR}/lib/periph_adc.o: lib/periph_adc.c  .generated_files/flags/XC16_dsP
 	@${RM} ${OBJECTDIR}/lib/periph_adc.o.d 
 	@${RM} ${OBJECTDIR}/lib/periph_adc.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib/periph_adc.c  -o ${OBJECTDIR}/lib/periph_adc.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib/periph_adc.o.d"        -g -omf=elf -DXPRJ_XC16_dsPIC30F4012=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/lib/fonctions_sup.o: lib/fonctions_sup.c  .generated_files/flags/XC16_dsPIC30F4012/2618e0f6459f59277c44ce710a442e6cd1a25c0 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
+	@${MKDIR} "${OBJECTDIR}/lib" 
+	@${RM} ${OBJECTDIR}/lib/fonctions_sup.o.d 
+	@${RM} ${OBJECTDIR}/lib/fonctions_sup.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib/fonctions_sup.c  -o ${OBJECTDIR}/lib/fonctions_sup.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib/fonctions_sup.o.d"        -g -omf=elf -DXPRJ_XC16_dsPIC30F4012=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 endif
 

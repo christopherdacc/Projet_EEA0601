@@ -13,11 +13,11 @@
 
 // définitions locales
 
-#define _RS					PORTBbits.RB0
-#define _CSB				PORTBbits.RB1
-#define _RESET				PORTBbits.RB2
-#define _CLK                PORTBbits.RB3
-#define _DATA               PORTBbits.RB4
+#define _RS					PORTEbits.RE0
+#define _CSB				PORTEbits.RE1
+#define _RESET				PORTEbits.RE2
+#define _CLK                PORTEbits.RE3
+#define _DATA               PORTEbits.RE4
 
 
 

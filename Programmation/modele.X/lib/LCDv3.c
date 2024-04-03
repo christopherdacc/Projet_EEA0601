@@ -53,10 +53,9 @@ void __attribute__(( __interrupt__ ,__auto_psv__ )) _T1Interrupt(void) {
         done = true;
         step = 15;
     }    
-
+    
     IFS0bits.T1IF = 0;
 }
-
 
 
 
@@ -81,7 +80,7 @@ void _InitSPIEmu(void){
     PR1 = 737;              // 40kHz -> 25µs
     _CLK = 0;               // clear clock
     _DATA = 0;              // clear data
-    TRISB&=~0x18;           // RB0 to 4 as output
+    TRISE&=~0x18;           // RB3 & 4 as output    11000
     T1CONbits.TON = 1;      // Timer 1 on
 }
 
@@ -126,9 +125,9 @@ fonctions publiques
 
 void InitLCD(void){
 
-    TRISBbits.TRISB0=0; // prog RS en sortie
-    TRISBbits.TRISB1=0; // prog CSB en sortie
-    TRISBbits.TRISB2=0; // prog RESET en sortie
+    TRISEbits.TRISE0=0; // prog RS en sortie
+    TRISEbits.TRISE1=0; // prog CSB en sortie
+    TRISEbits.TRISE2=0; // prog RESET en sortie
 
     _InitSPIEmu();
 

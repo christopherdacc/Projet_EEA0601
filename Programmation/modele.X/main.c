@@ -59,7 +59,7 @@
 
 /* Device header file */
 #include <xc.h>
-
+#include "p30f4012.h"
 #include <stdint.h>             /* Includes uint16_t definition               */
 #include <stdbool.h>            /* Includes true/false definition             */
 #include "./lib/periph_gen.h"
@@ -77,12 +77,28 @@
 /******************************************************************************/
 /* Global Variable Declaration                                                */
 /******************************************************************************/
-int contrast=32; //0 pour faible et 63 pour max
+int contrast=60; //0 pour faible et 63 pour max
+bool stateR = false;
+bool stateN = false;
+bool stateB = false;
 
 /******************************************************************************/
 /* Routines d'interruptions                                                   */
 /******************************************************************************/
 
+void initCN(void)
+{
+    //tris deja fait
+    CNEN1bits.CN2IE=1;
+    CNEN1bits.CN3IE=1;
+    CNEN1bits.CN4IE=1;
+}
+
+void CNInterruptEnable(void)
+{
+    IFS0bits.CNIF=0;   // RAZ flag interruption
+    IEC0bits.CNIE=1;   // autorisation interruption 
+}
 /*----------------------------------------------------------------------------*/
 /* Routine d'interruption du timer 3                                          */
 /*----------------------------------------------------------------------------*/
@@ -100,25 +116,56 @@ void __attribute__((__interrupt__,no_auto_psv)) _T3Interrupt( void )
 
 } // Fin du code de la routine d'interruption
 
+/*----------------------------------------------------------------------------*/
+/* Routine d'interruption du timer 3                                          */
+/*----------------------------------------------------------------------------*/
+
+void __attribute__(( __interrupt__ ,__auto_psv__ )) _CNInterrupt(void) {
+
+    
+    if(detect_button_press(1))
+    {
+        stateB=true;
+    }
+    if(detect_button_press(2))
+    {
+        stateN=true;
+    }
+    if(detect_button_press(3))
+    {
+        stateR=true;
+    }
+    else {stateB=false;stateN=false;stateR=false;}
+    
+    
+    IFS0bits.CNIF=0;
+}
+
+
+
+// Fin du code de la routine d'interruption
 
 /******************************************************************************/
 /* Programme principal (main program)                                         */
 /******************************************************************************/
 
 //initialisation des pates RE0, RE1 et RE2 aux boutons 1, 2 et 3
-#define BUTTON1_PIN   PORTEbits.RE0  // Bouton 1 connecter a RE0
-#define BUTTON2_PIN   PORTEbits.RE1  // Bouton 2 connecter a RE1
-#define BUTTON3_PIN   PORTEbits.RE2  // Bouton 3 connecter a RE2
+#define BUTTON1_PIN   PORTBbits.RB0  // Bouton 1 connecter a RE0
+#define BUTTON2_PIN   PORTBbits.RB1  // Bouton 2 connecter a RE1
+#define BUTTON3_PIN   PORTBbits.RB2  // Bouton 3 connecter a RE2
 
 //fonction d'initialisation des pins RE0, RE1, RE2
 void init_pins() {
-    TRISEbits.TRISE0 = 1; // Configure RE0 comme une entree du bouton 1
-    TRISEbits.TRISE1 = 1; // Configure RE1 comme une entree du bouton 2
-    TRISEbits.TRISE2 = 1; // Configure RE2 comme une entree du bouton 3
+    TRISBbits.TRISB0 = 1; // Configure RE0 comme une entree du bouton 1
+    TRISBbits.TRISB1 = 1; // Configure RE1 comme une entree du bouton 2
+    TRISBbits.TRISB2 = 1; // Configure RE2 comme une entree du bouton 3
     //les 3 lignes de code suivantes sont utiliser pour activer les pull up resistors pour RE0, RE1 et RE2
-    //LATEbits.LATE0 = 1;   // Enable pull-up resistor for RE0
-    //LATEbits.LATE1 = 1;   // Enable pull-up resistor for RE1
-    //LATEbits.LATE2 = 1;   // Enable pull-up resistor for RE2
+    CNPU1bits.CN2PUE = 1;       // Enable pull-up resistor for RB0
+    CNPU1bits.CN3PUE = 1;       // Enable pull-up resistor for RB1
+    CNPU1bits.CN4PUE = 1;       // Enable pull-up resistor for RB2
+    //LATBbits.LATB0 = 1;   
+    //LATBbits.LATB1 = 1;   
+    //LATBbits.LATB2 = 1;   
 }
 
 int16_t main(void)
@@ -161,11 +208,60 @@ int16_t main(void)
     LCDWriteStr("XX Demarrage! XX");
     LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
     LCDWriteStr("XXXXXXXXXXXXXXXX");
-    delay_en_s(5);                         //pause de 5s    
-    
+    delay_en_s(1);                         //pause de 5s    
+    int xxx=1;
     //fonction de declanchement de l'interface du menu
-    menu_principale(&contrast);
+    //menu_principale(&contrast);
     //fin de la fonction menu
+    
+     //debut init de l'interruption de CN
+    initCN();
+    IFS0bits.CNIF=0;
+    CNInterruptEnable();
+    
+     //fin init de l'interruption de CN
+    LCDClearDisplay();
+    do{                                 //boucle d'initiation de test
+                    if(stateB==true||stateN==true||stateR==true) {//valide si 1 des
+                                                                                                //3 boutons est appuyer
+                        if(stateB==true)  //si bouton 1 appuyer
+                        {
+                            LCDGoto(0,0);           
+                            LCDWriteStr("Button 1 = X");//un 'X' sera afficher a cote de Bouton 1
+                            
+                            //delay_en_s(0.5);
+                        }
+                        if(stateN==true)  //si bouton 2 appuyer
+                        {
+                            LCDGoto(1,0);
+                            LCDWriteStr("Button 2 = X");//un 'X' sera afficher a cote de Bouton 2
+                            //_wait10mus(300000);
+                            //delay_en_s(0.5);
+                        }
+                        if(stateR==true)  //si bouton 3 appuyer
+                        {
+                            LCDGoto(2,0);
+                            LCDWriteStr("Button 3 = X");//un 'X' sera afficher a cote de Bouton 3
+                            //_wait10mus(300000);
+                            //delay_en_s(0.5);
+                        }
+
+
+                    }      //do not forget to uncomment this****************
+                    else if(stateB==false||stateN==false||stateR==false) {
+                        LCDClearDisplay();          //si aucun bouton n'est appuyer on affiche 0
+                        LCDGoto(0,0);               //a cote des 3 boutons 
+                        LCDWriteStr("Button 1 = 0");
+                        LCDGoto(1,0);
+                        LCDWriteStr("Button 2 = 0");
+                        LCDGoto(2,0);
+                        LCDWriteStr("Button 3 = 0");
+
+                        //_wait10mus(300000);
+                        delay_en_s(0.3);
+                    }//cetter boucle se repetra jusqu'a ce qu'on appui sur les 3 boutons en meme temps
+                 //delay_en_s(0.5);   
+            }while(xxx==1);
     
     LCDClearDisplay();
     LCDWriteStr(" Configurations ");
@@ -175,9 +271,47 @@ int16_t main(void)
  
     while(1)
     {
+       /*if(stateB==true||stateN==true||stateR==true) {//valide si 1 des
+                                                                                                //3 boutons est appuyer
+                        if(stateB==true)  //si bouton 1 appuyer
+                        {
+                            LCDGoto(0,0);           
+                            LCDWriteStr("Button 1 = X");//un 'X' sera afficher a cote de Bouton 1
+                        }
+                        if(stateN==true)  //si bouton 2 appuyer
+                        {
+                            LCDGoto(1,0);
+                            LCDWriteStr("Button 2 = X");//un 'X' sera afficher a cote de Bouton 2
+                        }
+                        if(stateR==true)  //si bouton 3 appuyer
+                        {
+                            LCDGoto(2,0);
+                            LCDWriteStr("Button 3 = X");//un 'X' sera afficher a cote de Bouton 3
+                        }
+                        /*if(detect_button_press(3))  //si bouton 3 appuyer
+                        {
+                            LCDGoto(2,0);
+                            LCDWriteStr("Button 3 = X");//un 'X' sera afficher a cote de Bouton 3
+                            //_wait10mus(300000);
+                            //delay_en_s(0.5);
+                        }*/
+
+       /*}
        
+                    else if(stateB==false||stateN==false||stateR==false) {
+                        LCDClearDisplay();          //si aucun bouton n'est appuyer on affiche 0
+                        LCDGoto(0,0);               //a cote des 3 boutons 
+                        LCDWriteStr("Button 1 = 0");
+                        LCDGoto(1,0);
+                        LCDWriteStr("Button 2 = 0");
+                        LCDGoto(2,0);
+                        LCDWriteStr("Button 3 = 0");
+
+                        //_wait10mus(300000);
+                        delay_en_s(0.3);
+                    }
+    }*/
     }
-    
 }
 
 
