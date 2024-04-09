@@ -1,12 +1,12 @@
 /*============================================================================*/
-/* Programme de test de la carte microcontrôleur dspic30f4012                 */
+/* Programme de test de la carte microcontrÃ´leur dspic30f4012                 */
 /* ----------------------------------------------------------                 */
 /* Environnement : IDE : MPLAX X                                              */
 /*                 Compilateur C : XC16                                       */
 /* Le programme :                                                             */
-/*   - utilise un mécanisame d'interruption lié au timer 3 pour faire         */
+/*   - utilise un mÃ©canisame d'interruption liÃ© au timer 3 pour faire         */
 /*     osciller la patte RB0 du port B ;                                      */
-/*   - utilise le module PWM pour générer un signal impulsion sur la patte    */
+/*   - utilise le module PWM pour gÃ©nÃ©rer un signal impulsion sur la patte    */
 /*      RE0 du port E.                                                        */
 /*                                                                            */
 /* 2023.02.08                                                                 */
@@ -69,7 +69,7 @@
 #include "./lib/fonctions_sup.h"
 
 /******************************************************************************/
-/* Définition des équivalences                                                */
+/* DÃ©finition des Ã©quivalences                                                */
 /******************************************************************************/
 
 #define TIMEBASE (Fcy/1000)
@@ -105,7 +105,7 @@ void CNInterruptEnable(void)
 
 void __attribute__((__interrupt__,no_auto_psv)) _T3Interrupt( void )
 {
-  // Déclaration des variables de la routine d'interruption
+  // DÃ©claration des variables de la routine d'interruption
   // Par exemple : static unsigned int i = 0;
 
   // Code de la routine d'interruption
@@ -127,15 +127,26 @@ void __attribute__(( __interrupt__ ,__auto_psv__ )) _CNInterrupt(void) {
     {
         stateB=true;
     }
+    else if(!detect_button_press(1))
+    {
+        stateB=false;
+    }
     if(detect_button_press(2))
     {
         stateN=true;
+    }
+    else if(!detect_button_press(2))
+    {
+        stateN=false;
     }
     if(detect_button_press(3))
     {
         stateR=true;
     }
-    else {stateB=false;stateN=false;stateR=false;}
+    else if(!detect_button_press(3))
+    {
+        stateR=false;
+    }
     
     
     IFS0bits.CNIF=0;
@@ -171,26 +182,26 @@ void init_pins() {
 int16_t main(void)
 {
     /* -----------------------------------------------------------------------*/
-    /* Configurations (notamment des périphériques)                           */
+    /* Configurations (notamment des pÃ©riphÃ©riques)                           */
     /* -----------------------------------------------------------------------*/
 
     // Configuration du port B
-    ADPCFG = 0xFFFF;     // Configuration des pattes du port B comme entrées
-                         // sorties numériques (par défaut entrées analogiques)
+    ADPCFG = 0xFFFF;     // Configuration des pattes du port B comme entrÃ©es
+                         // sorties numÃ©riques (par dÃ©faut entrÃ©es analogiques)
     TRISB = 0b11111110;  // Initialisation de la patte RB0 du port B en sortie, 
-                         // les autres en entrées 
-    PORTB = 0;           // Mise à zéro des pattes en sorties du port B
+                         // les autres en entrÃ©es 
+    PORTB = 0;           // Mise Ã  zÃ©ro des pattes en sorties du port B
     
     //Configurqtion du port E
     
-    // Initialisation timer 3 - interruption à la milliseconde
+    // Initialisation timer 3 - interruption Ã  la milliseconde
     //InitTimer3(TIMEBASE);    // Initialisation du timer 3
-   // Timer3InterruptEnable(); // Autorisation de l'interruption liée au timer 3
+   // Timer3InterruptEnable(); // Autorisation de l'interruption liÃ©e au timer 3
 
     // Initialisation de la PWM : 1ms
     //InitPWM(461,PEN1L);  // Initialisation du module PWM      
     //PWMEnable(ON);       // Mise en route de la PWM
-    //PWM1PulseWidth(115); // Réglage du rapport cyclique
+    //PWM1PulseWidth(115); // RÃ©glage du rapport cyclique
     
     /* -----------------------------------------------------------------------*/
     /* Code principal de l'application                                                  */
