@@ -65,8 +65,16 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
       On a réalisé le test de continuité a l'ohm mètre.
       On a resouder une piste défectueuse.
       On a souder tout les composants sur la carte.
-        
+* Séance 11 (03/04/2024):
+      Reprogrammation du test des boutons en utilisant des iterruptions.
+      Interruptions fonctionnent mais que sur le bouton 3.
 
+* Séance 11.1 sup (09/04/2024):
+      Correction du code de l'interruption (Fonctionnement parfait des boutons).
+      Essai d'integrer la structure Keyboard avec les objets, mais pas de success.
+      Changement du bouton rouge.
+      Pendant le test du code, on a rencontrer un probleme de fonctionnement du microcontrolleur.
+      Probleme de cablage au niveau de l'alimentation du microcontrolleur.
 
 
 
