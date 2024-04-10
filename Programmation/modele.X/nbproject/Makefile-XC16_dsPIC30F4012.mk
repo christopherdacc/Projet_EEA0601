@@ -95,74 +95,74 @@ MP_LINKER_FILE_OPTION=,--script=p30F4012.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/XC16_dsPIC30F4012/5e8d5ed683d956266c9690e4da8419c623e3cc35 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
+${OBJECTDIR}/main.o: main.c  .generated_files/flags/XC16_dsPIC30F4012/586cac22bb8b619b2387ee78b0f9dc7701d2fa56 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  main.c  -o ${OBJECTDIR}/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD4=1    -omf=elf -DXPRJ_XC16_dsPIC30F4012=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/lib/periph_pwm.o: lib/periph_pwm.c  .generated_files/flags/XC16_dsPIC30F4012/5479e99d89dda87cd1a7fa69177472effe631340 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
+${OBJECTDIR}/lib/periph_pwm.o: lib/periph_pwm.c  .generated_files/flags/XC16_dsPIC30F4012/dbc0bc296f896ba030ff8582bb52a0a675761a1b .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
 	@${MKDIR} "${OBJECTDIR}/lib" 
 	@${RM} ${OBJECTDIR}/lib/periph_pwm.o.d 
 	@${RM} ${OBJECTDIR}/lib/periph_pwm.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib/periph_pwm.c  -o ${OBJECTDIR}/lib/periph_pwm.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib/periph_pwm.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD4=1    -omf=elf -DXPRJ_XC16_dsPIC30F4012=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/lib/periph_tmr.o: lib/periph_tmr.c  .generated_files/flags/XC16_dsPIC30F4012/8be7e70fd8409d3d6c0ba5ef8e6e293ef667ea3d .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
+${OBJECTDIR}/lib/periph_tmr.o: lib/periph_tmr.c  .generated_files/flags/XC16_dsPIC30F4012/7c6a16811142f1aee90756143e9187e619d6bff8 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
 	@${MKDIR} "${OBJECTDIR}/lib" 
 	@${RM} ${OBJECTDIR}/lib/periph_tmr.o.d 
 	@${RM} ${OBJECTDIR}/lib/periph_tmr.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib/periph_tmr.c  -o ${OBJECTDIR}/lib/periph_tmr.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib/periph_tmr.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD4=1    -omf=elf -DXPRJ_XC16_dsPIC30F4012=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/lib/LCDv3.o: lib/LCDv3.c  .generated_files/flags/XC16_dsPIC30F4012/eb6dbd395667d2fd1a7c5ebfaa77cd8b1d36dea1 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
+${OBJECTDIR}/lib/LCDv3.o: lib/LCDv3.c  .generated_files/flags/XC16_dsPIC30F4012/676884ad6b256f0c61f96805268eddee8aa54fab .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
 	@${MKDIR} "${OBJECTDIR}/lib" 
 	@${RM} ${OBJECTDIR}/lib/LCDv3.o.d 
 	@${RM} ${OBJECTDIR}/lib/LCDv3.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib/LCDv3.c  -o ${OBJECTDIR}/lib/LCDv3.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib/LCDv3.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD4=1    -omf=elf -DXPRJ_XC16_dsPIC30F4012=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/lib/periph_adc.o: lib/periph_adc.c  .generated_files/flags/XC16_dsPIC30F4012/8c42cdc3ea90ec74c317f69653aa96a5b7eeee44 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
+${OBJECTDIR}/lib/periph_adc.o: lib/periph_adc.c  .generated_files/flags/XC16_dsPIC30F4012/8a2c8b08197e8f5ad1e427f08a89e6cdb4861704 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
 	@${MKDIR} "${OBJECTDIR}/lib" 
 	@${RM} ${OBJECTDIR}/lib/periph_adc.o.d 
 	@${RM} ${OBJECTDIR}/lib/periph_adc.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib/periph_adc.c  -o ${OBJECTDIR}/lib/periph_adc.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib/periph_adc.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD4=1    -omf=elf -DXPRJ_XC16_dsPIC30F4012=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/lib/fonctions_sup.o: lib/fonctions_sup.c  .generated_files/flags/XC16_dsPIC30F4012/be10c6d0fb9b957214da59e03f0b689c74df125e .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
+${OBJECTDIR}/lib/fonctions_sup.o: lib/fonctions_sup.c  .generated_files/flags/XC16_dsPIC30F4012/a41ca6aa84a8ce52254cff5caa61365aa10f7f2 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
 	@${MKDIR} "${OBJECTDIR}/lib" 
 	@${RM} ${OBJECTDIR}/lib/fonctions_sup.o.d 
 	@${RM} ${OBJECTDIR}/lib/fonctions_sup.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib/fonctions_sup.c  -o ${OBJECTDIR}/lib/fonctions_sup.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib/fonctions_sup.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD4=1    -omf=elf -DXPRJ_XC16_dsPIC30F4012=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 else
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/XC16_dsPIC30F4012/6aa1d307360c2825f67f39d052b6204d0abe0807 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
+${OBJECTDIR}/main.o: main.c  .generated_files/flags/XC16_dsPIC30F4012/d9338af6542683f6d0d220e2f2928fe998a827a9 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  main.c  -o ${OBJECTDIR}/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/main.o.d"        -g -omf=elf -DXPRJ_XC16_dsPIC30F4012=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/lib/periph_pwm.o: lib/periph_pwm.c  .generated_files/flags/XC16_dsPIC30F4012/ba2fa157f52f5b1fde925ebbc95a379d198ac445 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
+${OBJECTDIR}/lib/periph_pwm.o: lib/periph_pwm.c  .generated_files/flags/XC16_dsPIC30F4012/f16d5cbbe3c12aefbed6eb026169140ecf30ea48 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
 	@${MKDIR} "${OBJECTDIR}/lib" 
 	@${RM} ${OBJECTDIR}/lib/periph_pwm.o.d 
 	@${RM} ${OBJECTDIR}/lib/periph_pwm.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib/periph_pwm.c  -o ${OBJECTDIR}/lib/periph_pwm.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib/periph_pwm.o.d"        -g -omf=elf -DXPRJ_XC16_dsPIC30F4012=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/lib/periph_tmr.o: lib/periph_tmr.c  .generated_files/flags/XC16_dsPIC30F4012/c601f3efdd828c906e2fd120e0e410dff451ca75 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
+${OBJECTDIR}/lib/periph_tmr.o: lib/periph_tmr.c  .generated_files/flags/XC16_dsPIC30F4012/77d32b85ee6ef5a1a870109dc23ff25049753f4 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
 	@${MKDIR} "${OBJECTDIR}/lib" 
 	@${RM} ${OBJECTDIR}/lib/periph_tmr.o.d 
 	@${RM} ${OBJECTDIR}/lib/periph_tmr.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib/periph_tmr.c  -o ${OBJECTDIR}/lib/periph_tmr.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib/periph_tmr.o.d"        -g -omf=elf -DXPRJ_XC16_dsPIC30F4012=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/lib/LCDv3.o: lib/LCDv3.c  .generated_files/flags/XC16_dsPIC30F4012/c9da3487a17924cdeebca8bb3fb08f579f03c75f .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
+${OBJECTDIR}/lib/LCDv3.o: lib/LCDv3.c  .generated_files/flags/XC16_dsPIC30F4012/867108ab50095aa217851d45904f70ed416f9309 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
 	@${MKDIR} "${OBJECTDIR}/lib" 
 	@${RM} ${OBJECTDIR}/lib/LCDv3.o.d 
 	@${RM} ${OBJECTDIR}/lib/LCDv3.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib/LCDv3.c  -o ${OBJECTDIR}/lib/LCDv3.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib/LCDv3.o.d"        -g -omf=elf -DXPRJ_XC16_dsPIC30F4012=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/lib/periph_adc.o: lib/periph_adc.c  .generated_files/flags/XC16_dsPIC30F4012/8deb363ee3b851ed4ac6cd33ccf2db98bafbf0b0 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
+${OBJECTDIR}/lib/periph_adc.o: lib/periph_adc.c  .generated_files/flags/XC16_dsPIC30F4012/3a6fae11bbd06c68b933d3e86eefc616ae63d81b .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
 	@${MKDIR} "${OBJECTDIR}/lib" 
 	@${RM} ${OBJECTDIR}/lib/periph_adc.o.d 
 	@${RM} ${OBJECTDIR}/lib/periph_adc.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib/periph_adc.c  -o ${OBJECTDIR}/lib/periph_adc.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib/periph_adc.o.d"        -g -omf=elf -DXPRJ_XC16_dsPIC30F4012=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/lib/fonctions_sup.o: lib/fonctions_sup.c  .generated_files/flags/XC16_dsPIC30F4012/2618e0f6459f59277c44ce710a442e6cd1a25c0 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
+${OBJECTDIR}/lib/fonctions_sup.o: lib/fonctions_sup.c  .generated_files/flags/XC16_dsPIC30F4012/d197a4560b542e0c9e752920475ba616c16f264 .generated_files/flags/XC16_dsPIC30F4012/fd67b544a79261c2fe49714d5749bb13d89b49dc
 	@${MKDIR} "${OBJECTDIR}/lib" 
 	@${RM} ${OBJECTDIR}/lib/fonctions_sup.o.d 
 	@${RM} ${OBJECTDIR}/lib/fonctions_sup.o 

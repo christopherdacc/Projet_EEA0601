@@ -77,10 +77,20 @@
 /******************************************************************************/
 /* Global Variable Declaration                                                */
 /******************************************************************************/
-int contrast=60; //0 pour faible et 63 pour max
+int contrast=35; //0 pour faible et 63 pour max
 bool stateR = false;
 bool stateN = false;
 bool stateB = false;
+
+typedef struct{
+    int upState:2;
+    int downState:2;
+    int enterState:2;
+    int upEdge:2;
+    int downEdge:2;
+    int enterEdge:2;
+}Keyboard;
+Keyboard myKeyboard;
 
 /******************************************************************************/
 /* Routines d'interruptions                                                   */
@@ -125,11 +135,11 @@ void __attribute__(( __interrupt__ ,__auto_psv__ )) _CNInterrupt(void) {
     
     if(detect_button_press(1))
     {
-        stateB=true;
+        stateR=true;
     }
     else if(!detect_button_press(1))
     {
-        stateB=false;
+        stateR=false;
     }
     if(detect_button_press(2))
     {
@@ -141,13 +151,13 @@ void __attribute__(( __interrupt__ ,__auto_psv__ )) _CNInterrupt(void) {
     }
     if(detect_button_press(3))
     {
-        stateR=true;
+        stateB=true;
     }
     else if(!detect_button_press(3))
     {
-        stateR=false;
+        stateB=false;
     }
-    
+  
     
     IFS0bits.CNIF=0;
 }
@@ -173,10 +183,7 @@ void init_pins() {
     //les 3 lignes de code suivantes sont utiliser pour activer les pull up resistors pour RE0, RE1 et RE2
     CNPU1bits.CN2PUE = 1;       // Enable pull-up resistor for RB0
     CNPU1bits.CN3PUE = 1;       // Enable pull-up resistor for RB1
-    CNPU1bits.CN4PUE = 1;       // Enable pull-up resistor for RB2
-    //LATBbits.LATB0 = 1;   
-    //LATBbits.LATB1 = 1;   
-    //LATBbits.LATB2 = 1;   
+    CNPU1bits.CN4PUE = 1;       // Enable pull-up resistor for RB2  
 }
 
 int16_t main(void)
@@ -209,8 +216,6 @@ int16_t main(void)
     init_pins();                        //initialisation des pins
     InitLCD();                          //initialisation de l'ecran
     
-    int choix_men=0;
-    
     LCDDisplayOn();                     //on allume l'ecran
     LCDContrastSet(contrast);           //on defini la luminosite avec contrast 
     LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
@@ -222,57 +227,44 @@ int16_t main(void)
     delay_en_s(1);                         //pause de 5s    
     int xxx=1;
     //fonction de declanchement de l'interface du menu
-    //menu_principale(&contrast);
+    
     //fin de la fonction menu
     
      //debut init de l'interruption de CN
     initCN();
     IFS0bits.CNIF=0;
     CNInterruptEnable();
-    
+    menu_principale(&stateB,&stateN,&stateR);
      //fin init de l'interruption de CN
     LCDClearDisplay();
     do{                                 //boucle d'initiation de test
-                    if(stateB==true||stateN==true||stateR==true) {//valide si 1 des
-                                                                                                //3 boutons est appuyer
-                        if(stateB==true)  //si bouton 1 appuyer
-                        {
-                            LCDGoto(0,0);           
-                            LCDWriteStr("Button 1 = X");//un 'X' sera afficher a cote de Bouton 1
-                            
-                            //delay_en_s(0.5);
-                        }
-                        if(stateN==true)  //si bouton 2 appuyer
-                        {
-                            LCDGoto(1,0);
-                            LCDWriteStr("Button 2 = X");//un 'X' sera afficher a cote de Bouton 2
-                            //_wait10mus(300000);
-                            //delay_en_s(0.5);
-                        }
-                        if(stateR==true)  //si bouton 3 appuyer
-                        {
-                            LCDGoto(2,0);
-                            LCDWriteStr("Button 3 = X");//un 'X' sera afficher a cote de Bouton 3
-                            //_wait10mus(300000);
-                            //delay_en_s(0.5);
-                        }
-
-
-                    }      //do not forget to uncomment this****************
-                    else if(stateB==false||stateN==false||stateR==false) {
-                        LCDClearDisplay();          //si aucun bouton n'est appuyer on affiche 0
-                        LCDGoto(0,0);               //a cote des 3 boutons 
-                        LCDWriteStr("Button 1 = 0");
-                        LCDGoto(1,0);
-                        LCDWriteStr("Button 2 = 0");
-                        LCDGoto(2,0);
-                        LCDWriteStr("Button 3 = 0");
-
-                        //_wait10mus(300000);
-                        delay_en_s(0.3);
-                    }//cetter boucle se repetra jusqu'a ce qu'on appui sur les 3 boutons en meme temps
-                 //delay_en_s(0.5);   
-            }while(xxx==1);
+        
+        if (stateB==true)
+        {
+            LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+            LCDWriteStr("Button 1 = 1");
+        }
+        else if (stateN==true)
+        {
+            LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+            LCDWriteStr("Button 2 = 1");
+        }  
+        else if (stateR==true)
+        {
+            LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+            LCDWriteStr("Button 3 = 1");
+        }
+        else
+        {
+            LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+            LCDWriteStr("Button 1 = 0");
+            LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+            LCDWriteStr("Button 2 = 0");
+            LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+            LCDWriteStr("Button 3 = 0");
+        }
+        
+      }while(xxx==1);
     
     LCDClearDisplay();
     LCDWriteStr(" Configurations ");
@@ -282,46 +274,6 @@ int16_t main(void)
  
     while(1)
     {
-       /*if(stateB==true||stateN==true||stateR==true) {//valide si 1 des
-                                                                                                //3 boutons est appuyer
-                        if(stateB==true)  //si bouton 1 appuyer
-                        {
-                            LCDGoto(0,0);           
-                            LCDWriteStr("Button 1 = X");//un 'X' sera afficher a cote de Bouton 1
-                        }
-                        if(stateN==true)  //si bouton 2 appuyer
-                        {
-                            LCDGoto(1,0);
-                            LCDWriteStr("Button 2 = X");//un 'X' sera afficher a cote de Bouton 2
-                        }
-                        if(stateR==true)  //si bouton 3 appuyer
-                        {
-                            LCDGoto(2,0);
-                            LCDWriteStr("Button 3 = X");//un 'X' sera afficher a cote de Bouton 3
-                        }
-                        /*if(detect_button_press(3))  //si bouton 3 appuyer
-                        {
-                            LCDGoto(2,0);
-                            LCDWriteStr("Button 3 = X");//un 'X' sera afficher a cote de Bouton 3
-                            //_wait10mus(300000);
-                            //delay_en_s(0.5);
-                        }*/
-
-       /*}
-       
-                    else if(stateB==false||stateN==false||stateR==false) {
-                        LCDClearDisplay();          //si aucun bouton n'est appuyer on affiche 0
-                        LCDGoto(0,0);               //a cote des 3 boutons 
-                        LCDWriteStr("Button 1 = 0");
-                        LCDGoto(1,0);
-                        LCDWriteStr("Button 2 = 0");
-                        LCDGoto(2,0);
-                        LCDWriteStr("Button 3 = 0");
-
-                        //_wait10mus(300000);
-                        delay_en_s(0.3);
-                    }
-    }*/
     }
 }
 

@@ -59,6 +59,10 @@ c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixsf
                               build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o (_(float, int, long long, short, float, short, int))
 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
                               c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixsfsi.XX_o) (__funpack)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(modsi3.XX_o)
+                              build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o (___modsi3)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umodsi3.XX_o)
+                              c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(modsi3.XX_o) (___umodsi3)
 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
                               build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o (___mulsf3)
 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
@@ -69,6 +73,8 @@ c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typef
                               c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o) (__typef)
 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
                               c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o) (__propnanf)
+c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(udivsi3.XX_o)
+                              c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umodsi3.XX_o) (___udivsi3)
 
 
 Selected CodeGuard Options:
@@ -101,23 +107,23 @@ Default Scalar Model: Small
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x100               0x418           0x624  (1572)
-.const                       0x518               0x180           0x240  (576)
-.text                        0x698               0x8fc           0xd7a  (3450)
-.dinit                       0xf94                0x20            0x30  (48)
+.text                        0x100               0x478           0x6b4  (1716)
+.const                       0x578               0x16a           0x21f  (543)
+.text                        0x6e2               0x88c           0xcd2  (3282)
+.dinit                       0xf6e                0x20            0x30  (48)
 
-                 Total "program" memory used (bytes):         0x160e  (5646) 11%
+                 Total "program" memory used (bytes):         0x15d5  (5589) 11%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x800]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.nbss                        0x800                   0             0x4  (4)
-.ndata                       0x804                   0             0x6  (6)
-.nbss                        0x80a                   0             0x2  (2)
+.nbss                        0x800                   0            0x10  (16)
+.ndata                       0x810                   0             0x6  (6)
+.nbss                        0x816                   0             0x2  (2)
 
-                 Total "data" memory used (bytes):            0xc  (12) <1%
+                 Total "data" memory used (bytes):           0x18  (24) 1%
 
 
 Dynamic Memory Usage
@@ -125,9 +131,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x80c                               0x7f4  (2036)
+stack                        0x818                               0x7e8  (2024)
 
-                 Maximum dynamic memory (bytes):          0x7f4  (2036)
+                 Maximum dynamic memory (bytes):          0x7e8  (2024)
 
 Info: Project is using a large data memory model when small data memory model is sufficient.
 
@@ -137,11 +143,13 @@ External Symbols in Data Memory (by address):
                     0x0800                  _stateR
                     0x0801                  _stateN
                     0x0802                  _stateB
-                    0x0808                  _contrast
+                    0x0804                  _myKeyboard
+                    0x0814                  _contrast
 
 External Symbols in Data Memory (by name):
 
-                    0x0808                  _contrast
+                    0x0814                  _contrast
+                    0x0804                  _myKeyboard
                     0x0802                  _stateB
                     0x0801                  _stateN
                     0x0800                  _stateR
@@ -154,113 +162,119 @@ External Symbols in Program Memory (by address):
                   0x000152                  __data_init_standard
                   0x0001c8                  __T3Interrupt
                   0x0001ea                  __CNInterrupt
-                  0x00023a                  __T1Interrupt
-                  0x0002a2                  __DefaultInterrupt
-                  0x0002a8                  ___fixsfsi
-                  0x0002ea                  __funpack
-                  0x000314                  ___mulsf3x
-                  0x000314                  ___mulsf3
-                  0x000420                  __dnrmpackf
-                  0x000474                  __unpackdnrmf
-                  0x0004d2                  __typef
-                  0x000506                  __propnanf
-                  0x000698                  _menu_principale
-                  0x000918                  _detect_button_press
-                  0x00095a                  _loading_X_simulator
-                  0x000998                  _delay_en_s
-                  0x0009c8                  _InitADCx
-                  0x0009e6                  _InitADC0
-                  0x000a04                  _InitADC0and1
-                  0x000a24                  _InitADC0to3
-                  0x000a46                  _InitADC4and5
-                  0x000a68                  _InitADC0Seq0to4
-                  0x000a8a                  _InitADC0Seq0to5
-                  0x000aac                  _StartADCx
-                  0x000ae8                  _StartADC0
-                  0x000b02                  _StartADC0and1
-                  0x000b28                  _StartADC0to3
-                  0x000b66                  _StartADC4and5
-                  0x000b8c                  _StartADC0seq0to4
-                  0x000bd8                  _StartADC0seq0to5
-                  0x000c30                  __wait10mus
-                  0x000c50                  __InitSPIEmu
-                  0x000c6c                  __WriteToSpi
-                  0x000cac                  __SPIWritten
-                  0x000cb4                  __LCDCmdWrite
-                  0x000ce2                  _InitLCD
-                  0x000d2c                  _LCDDataWrite
-                  0x000d54                  _LCDWriteStr
-                  0x000d80                  _LCDGoto
-                  0x000db6                  _LCDContrastSet
-                  0x000de8                  _initCN
-                  0x000df4                  _CNInterruptEnable
-                  0x000dfe                  _init_pins
-                  0x000e10                  _main
-                  0x000f08                  _InitPWM
-                  0x000f2a                  _PWMEnable
-                  0x000f44                  _PWM1PulseWidth
-                  0x000f52                  _PWM2PulseWidth
-                  0x000f60                  _InitTimer3
-                  0x000f7e                  _Timer3InterruptEnable
+                  0x000256                  __T1Interrupt
+                  0x0002be                  __DefaultInterrupt
+                  0x0002c4                  ___fixsfsi
+                  0x000306                  __funpack
+                  0x000330                  ___modsi3
+                  0x00034e                  ___umodsi3
+                  0x000354                  ___mulsf3x
+                  0x000354                  ___mulsf3
+                  0x000460                  __dnrmpackf
+                  0x0004b4                  __unpackdnrmf
+                  0x000512                  __typef
+                  0x000546                  __propnanf
+                  0x000558                  ___udivsi3
+                  0x0006e2                  _menu_principale
+                  0x000924                  _detect_button_press
+                  0x000966                  _loading_X_simulator
+                  0x0009a4                  _delay_en_s
+                  0x0009d4                  _InitADCx
+                  0x0009f2                  _InitADC0
+                  0x000a10                  _InitADC0and1
+                  0x000a30                  _InitADC0to3
+                  0x000a52                  _InitADC4and5
+                  0x000a74                  _InitADC0Seq0to4
+                  0x000a96                  _InitADC0Seq0to5
+                  0x000ab8                  _StartADCx
+                  0x000af4                  _StartADC0
+                  0x000b0e                  _StartADC0and1
+                  0x000b34                  _StartADC0to3
+                  0x000b72                  _StartADC4and5
+                  0x000b98                  _StartADC0seq0to4
+                  0x000be4                  _StartADC0seq0to5
+                  0x000c3c                  __wait10mus
+                  0x000c5c                  __InitSPIEmu
+                  0x000c78                  __WriteToSpi
+                  0x000cb8                  __SPIWritten
+                  0x000cc0                  __LCDCmdWrite
+                  0x000cee                  _InitLCD
+                  0x000d38                  _LCDDataWrite
+                  0x000d60                  _LCDWriteStr
+                  0x000d8c                  _LCDGoto
+                  0x000dc2                  _LCDContrastSet
+                  0x000df4                  _initCN
+                  0x000e00                  _CNInterruptEnable
+                  0x000e0a                  _init_pins
+                  0x000e1c                  _main
+                  0x000ee2                  _InitPWM
+                  0x000f04                  _PWMEnable
+                  0x000f1e                  _PWM1PulseWidth
+                  0x000f2c                  _PWM2PulseWidth
+                  0x000f3a                  _InitTimer3
+                  0x000f58                  _Timer3InterruptEnable
                   0xf8000a                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x000df4                  _CNInterruptEnable
-                  0x0009e6                  _InitADC0
-                  0x000a68                  _InitADC0Seq0to4
-                  0x000a8a                  _InitADC0Seq0to5
-                  0x000a04                  _InitADC0and1
-                  0x000a24                  _InitADC0to3
-                  0x000a46                  _InitADC4and5
-                  0x0009c8                  _InitADCx
-                  0x000ce2                  _InitLCD
-                  0x000f08                  _InitPWM
-                  0x000f60                  _InitTimer3
-                  0x000db6                  _LCDContrastSet
-                  0x000d2c                  _LCDDataWrite
-                  0x000d80                  _LCDGoto
-                  0x000d54                  _LCDWriteStr
-                  0x000f44                  _PWM1PulseWidth
-                  0x000f52                  _PWM2PulseWidth
-                  0x000f2a                  _PWMEnable
-                  0x000ae8                  _StartADC0
-                  0x000b02                  _StartADC0and1
-                  0x000b8c                  _StartADC0seq0to4
-                  0x000bd8                  _StartADC0seq0to5
-                  0x000b28                  _StartADC0to3
-                  0x000b66                  _StartADC4and5
-                  0x000aac                  _StartADCx
-                  0x000f7e                  _Timer3InterruptEnable
+                  0x000e00                  _CNInterruptEnable
+                  0x0009f2                  _InitADC0
+                  0x000a74                  _InitADC0Seq0to4
+                  0x000a96                  _InitADC0Seq0to5
+                  0x000a10                  _InitADC0and1
+                  0x000a30                  _InitADC0to3
+                  0x000a52                  _InitADC4and5
+                  0x0009d4                  _InitADCx
+                  0x000cee                  _InitLCD
+                  0x000ee2                  _InitPWM
+                  0x000f3a                  _InitTimer3
+                  0x000dc2                  _LCDContrastSet
+                  0x000d38                  _LCDDataWrite
+                  0x000d8c                  _LCDGoto
+                  0x000d60                  _LCDWriteStr
+                  0x000f1e                  _PWM1PulseWidth
+                  0x000f2c                  _PWM2PulseWidth
+                  0x000f04                  _PWMEnable
+                  0x000af4                  _StartADC0
+                  0x000b0e                  _StartADC0and1
+                  0x000b98                  _StartADC0seq0to4
+                  0x000be4                  _StartADC0seq0to5
+                  0x000b34                  _StartADC0to3
+                  0x000b72                  _StartADC4and5
+                  0x000ab8                  _StartADCx
+                  0x000f58                  _Timer3InterruptEnable
                   0x0001ea                  __CNInterrupt
-                  0x0002a2                  __DefaultInterrupt
+                  0x0002be                  __DefaultInterrupt
                   0xf8000a                  __FGS.sec
-                  0x000c50                  __InitSPIEmu
-                  0x000cb4                  __LCDCmdWrite
-                  0x000cac                  __SPIWritten
-                  0x00023a                  __T1Interrupt
+                  0x000c5c                  __InitSPIEmu
+                  0x000cc0                  __LCDCmdWrite
+                  0x000cb8                  __SPIWritten
+                  0x000256                  __T1Interrupt
                   0x0001c8                  __T3Interrupt
-                  0x000c6c                  __WriteToSpi
-                  0x0002a8                  ___fixsfsi
-                  0x000314                  ___mulsf3
-                  0x000314                  ___mulsf3x
+                  0x000c78                  __WriteToSpi
+                  0x0002c4                  ___fixsfsi
+                  0x000330                  ___modsi3
+                  0x000354                  ___mulsf3
+                  0x000354                  ___mulsf3x
+                  0x000558                  ___udivsi3
+                  0x00034e                  ___umodsi3
                   0x000152                  __data_init
                   0x000152                  __data_init_standard
-                  0x000420                  __dnrmpackf
-                  0x0002ea                  __funpack
-                  0x000506                  __propnanf
+                  0x000460                  __dnrmpackf
+                  0x000306                  __funpack
+                  0x000546                  __propnanf
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x0004d2                  __typef
-                  0x000474                  __unpackdnrmf
-                  0x000c30                  __wait10mus
-                  0x000998                  _delay_en_s
-                  0x000918                  _detect_button_press
-                  0x000de8                  _initCN
-                  0x000dfe                  _init_pins
-                  0x00095a                  _loading_X_simulator
-                  0x000e10                  _main
-                  0x000698                  _menu_principale
+                  0x000512                  __typef
+                  0x0004b4                  __unpackdnrmf
+                  0x000c3c                  __wait10mus
+                  0x0009a4                  _delay_en_s
+                  0x000924                  _detect_button_press
+                  0x000df4                  _initCN
+                  0x000e0a                  _init_pins
+                  0x000966                  _loading_X_simulator
+                  0x000e1c                  _main
+                  0x0006e2                  _menu_principale
 
 Memory Configuration
 
@@ -322,7 +336,7 @@ LOAD c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libfx-elf.a
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000100        0x418
+.text             0x000100        0x478
  *(.init)
  .init            0x000100         0x4c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(crt0_standard.o)
                   0x000100                  __resetPRI
@@ -334,36 +348,42 @@ LOAD c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libfx-elf.a
  *(.user_init)
  *(.handle)
  *(.isr*)
- .isr.text        0x0001c8         0x72 build/XC16_dsPIC30F4012/production/main.o
+ .isr.text        0x0001c8         0x8e build/XC16_dsPIC30F4012/production/main.o
                   0x0001c8                  __T3Interrupt
                   0x0001ea                  __CNInterrupt
- .isr.text        0x00023a         0x68 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
-                  0x00023a                  __T1Interrupt
- .isr             0x0002a2          0x4 default_isr
-                  0x0002a2                  __DefaultInterrupt
+ .isr.text        0x000256         0x68 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
+                  0x000256                  __T1Interrupt
+ .isr             0x0002be          0x4 default_isr
+                  0x0002be                  __DefaultInterrupt
  *(.libc)
  *(.libm)
  *(.libdsp)
  *(.lib*)
  .libpic30_crt_start_mode
-                  0x0002a6          0x2 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normal.Meo)
-                  0x0002a6                  __crt_start_mode
-                  0x0002a6                  __crt_start_mode_normal
- .libm.fixsfsi    0x0002a8         0x42 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixsfsi.XX_o)
-                  0x0002a8                  _(float, int, long long, short, float, short, int)
- .libm.funpack    0x0002ea         0x2a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
-                  0x0002ea                  __funpack
- .libmx           0x000314        0x10c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
-                  0x000314                  ___mulsf3x
-                  0x000314                  ___mulsf3
- .libmx           0x000420         0x54 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
-                  0x000420                  __dnrmpackf
- .libmx           0x000474         0x5e c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.XX_o)
-                  0x000474                  __unpackdnrmf
- .libmx           0x0004d2         0x34 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.XX_o)
-                  0x0004d2                  __typef
- .libmx           0x000506         0x12 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
-                  0x000506                  __propnanf
+                  0x0002c2          0x2 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normal.Meo)
+                  0x0002c2                  __crt_start_mode
+                  0x0002c2                  __crt_start_mode_normal
+ .libm.fixsfsi    0x0002c4         0x42 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixsfsi.XX_o)
+                  0x0002c4                  _(float, int, long long, short, float, short, int)
+ .libm.funpack    0x000306         0x2a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
+                  0x000306                  __funpack
+ .libm.modsi3     0x000330         0x1e c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(modsi3.XX_o)
+                  0x000330                  ___modsi3
+ .libm.umodsi3    0x00034e          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umodsi3.XX_o)
+                  0x00034e                  ___umodsi3
+ .libmx           0x000354        0x10c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
+                  0x000354                  ___mulsf3x
+                  0x000354                  ___mulsf3
+ .libmx           0x000460         0x54 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
+                  0x000460                  __dnrmpackf
+ .libmx           0x0004b4         0x5e c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.XX_o)
+                  0x0004b4                  __unpackdnrmf
+ .libmx           0x000512         0x34 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.XX_o)
+                  0x000512                  __typef
+ .libmx           0x000546         0x12 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
+                  0x000546                  __propnanf
+ .libm.udivsi3    0x000558         0x20 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(udivsi3.XX_o)
+                  0x000558                  ___udivsi3
 
 usercode
  *(usercode)
@@ -397,7 +417,7 @@ __RESERVED2
 
 __FGS             0xf8000a          0x2
  *(__FGS.sec*)
- __FGS.sec        0xf8000a          0x2 /CW/_FGS
+ __FGS.sec        0xf8000a          0x2 /CW/_FGSP¢ð
                   0xf8000a                  __FGS.sec
 
 __FICD
@@ -412,54 +432,63 @@ userdata
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x368f
+.debug_info       0x000000       0x3966
  *(.debug_info)
- .debug_info      0x000000        0x98c build/XC16_dsPIC30F4012/production/main.o
- .debug_info      0x00098c        0x59c build/XC16_dsPIC30F4012/production/lib/periph_pwm.o
- .debug_info      0x000f28        0x873 build/XC16_dsPIC30F4012/production/lib/periph_tmr.o
- .debug_info      0x00179b        0x9d8 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
- .debug_info      0x002173        0xcdf build/XC16_dsPIC30F4012/production/lib/periph_adc.o
- .debug_info      0x002e52        0x409 build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
- .debug_info      0x00325b         0x8d c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixsfsi.XX_o)
- .debug_info      0x0032e8         0x8d c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
- .debug_info      0x003375         0x9d c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
- .debug_info      0x003412         0xa0 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
- .debug_info      0x0034b2         0xa2 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.XX_o)
- .debug_info      0x003554         0x9c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.XX_o)
- .debug_info      0x0035f0         0x9f c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
+ .debug_info      0x000000        0xaae build/XC16_dsPIC30F4012/production/main.o
+ .debug_info      0x000aae        0x5a0 build/XC16_dsPIC30F4012/production/lib/periph_pwm.o
+ .debug_info      0x00104e        0x877 build/XC16_dsPIC30F4012/production/lib/periph_tmr.o
+ .debug_info      0x0018c5        0x9dc build/XC16_dsPIC30F4012/production/lib/LCDv3.o
+ .debug_info      0x0022a1        0xce3 build/XC16_dsPIC30F4012/production/lib/periph_adc.o
+ .debug_info      0x002f84        0x408 build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
+ .debug_info      0x00338c         0x8d c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixsfsi.XX_o)
+ .debug_info      0x003419         0x8d c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
+ .debug_info      0x0034a6         0x8c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(modsi3.XX_o)
+ .debug_info      0x003532         0x8d c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umodsi3.XX_o)
+ .debug_info      0x0035bf         0x9d c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
+ .debug_info      0x00365c         0xa0 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
+ .debug_info      0x0036fc         0xa2 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.XX_o)
+ .debug_info      0x00379e         0x9c c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.XX_o)
+ .debug_info      0x00383a         0x9f c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
+ .debug_info      0x0038d9         0x8d c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(udivsi3.XX_o)
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x6d4
+.debug_abbrev     0x000000        0x733
  *(.debug_abbrev)
- .debug_abbrev    0x000000        0x11a build/XC16_dsPIC30F4012/production/main.o
- .debug_abbrev    0x00011a         0xee build/XC16_dsPIC30F4012/production/lib/periph_pwm.o
- .debug_abbrev    0x000208         0xeb build/XC16_dsPIC30F4012/production/lib/periph_tmr.o
- .debug_abbrev    0x0002f3        0x118 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
- .debug_abbrev    0x00040b        0x131 build/XC16_dsPIC30F4012/production/lib/periph_adc.o
- .debug_abbrev    0x00053c        0x10c build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
- .debug_abbrev    0x000648         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixsfsi.XX_o)
- .debug_abbrev    0x00065c         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
- .debug_abbrev    0x000670         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
- .debug_abbrev    0x000684         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
- .debug_abbrev    0x000698         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.XX_o)
- .debug_abbrev    0x0006ac         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.XX_o)
- .debug_abbrev    0x0006c0         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
+ .debug_abbrev    0x000000        0x14c build/XC16_dsPIC30F4012/production/main.o
+ .debug_abbrev    0x00014c         0xee build/XC16_dsPIC30F4012/production/lib/periph_pwm.o
+ .debug_abbrev    0x00023a         0xeb build/XC16_dsPIC30F4012/production/lib/periph_tmr.o
+ .debug_abbrev    0x000325        0x118 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
+ .debug_abbrev    0x00043d        0x131 build/XC16_dsPIC30F4012/production/lib/periph_adc.o
+ .debug_abbrev    0x00056e         0xfd build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
+ .debug_abbrev    0x00066b         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixsfsi.XX_o)
+ .debug_abbrev    0x00067f         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
+ .debug_abbrev    0x000693         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(modsi3.XX_o)
+ .debug_abbrev    0x0006a7         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umodsi3.XX_o)
+ .debug_abbrev    0x0006bb         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
+ .debug_abbrev    0x0006cf         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
+ .debug_abbrev    0x0006e3         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.XX_o)
+ .debug_abbrev    0x0006f7         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.XX_o)
+ .debug_abbrev    0x00070b         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
+ .debug_abbrev    0x00071f         0x14 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(udivsi3.XX_o)
 
-.debug_line       0x000000        0xb29
+.debug_line       0x000000        0xbd2
  *(.debug_line)
- .debug_line      0x000000        0x165 build/XC16_dsPIC30F4012/production/main.o
- .debug_line      0x000165        0x12d build/XC16_dsPIC30F4012/production/lib/periph_pwm.o
- .debug_line      0x000292        0x115 build/XC16_dsPIC30F4012/production/lib/periph_tmr.o
- .debug_line      0x0003a7        0x16e build/XC16_dsPIC30F4012/production/lib/LCDv3.o
- .debug_line      0x000515        0x190 build/XC16_dsPIC30F4012/production/lib/periph_adc.o
- .debug_line      0x0006a5        0x17d build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
- .debug_line      0x000822         0x56 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixsfsi.XX_o)
- .debug_line      0x000878         0x4a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
- .debug_line      0x0008c2         0xcc c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
- .debug_line      0x00098e         0x72 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
- .debug_line      0x000a00         0x7a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.XX_o)
- .debug_line      0x000a7a         0x5e c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.XX_o)
- .debug_line      0x000ad8         0x51 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
+ .debug_line      0x000000        0x160 build/XC16_dsPIC30F4012/production/main.o
+ .debug_line      0x000160        0x12d build/XC16_dsPIC30F4012/production/lib/periph_pwm.o
+ .debug_line      0x00028d        0x115 build/XC16_dsPIC30F4012/production/lib/periph_tmr.o
+ .debug_line      0x0003a2        0x16e build/XC16_dsPIC30F4012/production/lib/LCDv3.o
+ .debug_line      0x000510        0x190 build/XC16_dsPIC30F4012/production/lib/periph_adc.o
+ .debug_line      0x0006a0        0x16b build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
+ .debug_line      0x00080b         0x56 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixsfsi.XX_o)
+ .debug_line      0x000861         0x4a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
+ .debug_line      0x0008ab         0x43 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(modsi3.XX_o)
+ .debug_line      0x0008ee         0x38 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umodsi3.XX_o)
+ .debug_line      0x000926         0xcc c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
+ .debug_line      0x0009f2         0x72 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
+ .debug_line      0x000a64         0x7a c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.XX_o)
+ .debug_line      0x000ade         0x5e c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.XX_o)
+ .debug_line      0x000b3c         0x51 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
+ .debug_line      0x000b8d         0x45 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(udivsi3.XX_o)
 
 .debug_frame      0x000000        0x4e8
  *(.debug_frame)
@@ -470,14 +499,14 @@ userdata
  .debug_frame     0x0002ec        0x180 build/XC16_dsPIC30F4012/production/lib/periph_adc.o
  .debug_frame     0x00046c         0x7c build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
 
-.debug_str        0x000000        0x113
+.debug_str        0x000000        0x10a
  *(.debug_str)
  .debug_str       0x000000         0x43 build/XC16_dsPIC30F4012/production/main.o
  .debug_str       0x000043          0xa build/XC16_dsPIC30F4012/production/lib/periph_pwm.o
  .debug_str       0x00004d         0x25 build/XC16_dsPIC30F4012/production/lib/periph_tmr.o
  .debug_str       0x000072         0x30 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
  .debug_str       0x0000a2         0x5e build/XC16_dsPIC30F4012/production/lib/periph_adc.o
- .debug_str       0x000100         0x13 build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
+ .debug_str       0x000100          0xa build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
 
 .debug_loc
  *(.debug_loc)
@@ -486,25 +515,25 @@ userdata
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x34c
+                  0x000000        0x35b
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x9a build/XC16_dsPIC30F4012/production/main.o
+                  0x000000         0xa9 build/XC16_dsPIC30F4012/production/main.o
  .debug_pubnames
-                  0x00009a         0x52 build/XC16_dsPIC30F4012/production/lib/periph_pwm.o
+                  0x0000a9         0x52 build/XC16_dsPIC30F4012/production/lib/periph_pwm.o
  .debug_pubnames
-                  0x0000ec         0x3b build/XC16_dsPIC30F4012/production/lib/periph_tmr.o
+                  0x0000fb         0x3b build/XC16_dsPIC30F4012/production/lib/periph_tmr.o
  .debug_pubnames
-                  0x000127         0xbf build/XC16_dsPIC30F4012/production/lib/LCDv3.o
+                  0x000136         0xbf build/XC16_dsPIC30F4012/production/lib/LCDv3.o
  .debug_pubnames
-                  0x0001e6        0x101 build/XC16_dsPIC30F4012/production/lib/periph_adc.o
+                  0x0001f5        0x101 build/XC16_dsPIC30F4012/production/lib/periph_adc.o
  .debug_pubnames
-                  0x0002e7         0x65 build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
+                  0x0002f6         0x65 build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
 
 .debug_ranges
  *(.debug_ranges)
 
-.debug_aranges    0x000000        0x138
+.debug_aranges    0x000000        0x180
  *(.debug_aranges)
  .debug_aranges
                   0x000000         0x18 build/XC16_dsPIC30F4012/production/main.o
@@ -523,15 +552,21 @@ userdata
  .debug_aranges
                   0x0000a8         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
  .debug_aranges
-                  0x0000c0         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
+                  0x0000c0         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(modsi3.XX_o)
  .debug_aranges
-                  0x0000d8         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
+                  0x0000d8         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umodsi3.XX_o)
  .debug_aranges
-                  0x0000f0         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.XX_o)
+                  0x0000f0         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(mulsf3x.XX_o)
  .debug_aranges
-                  0x000108         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.XX_o)
+                  0x000108         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(dnrmpackfx.XX_o)
  .debug_aranges
-                  0x000120         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
+                  0x000120         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(unpackdnrmfx.XX_o)
+ .debug_aranges
+                  0x000138         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(typefx.XX_o)
+ .debug_aranges
+                  0x000150         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(propnanfx.XX_o)
+ .debug_aranges
+                  0x000168         0x18 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(udivsi3.XX_o)
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -1200,61 +1235,68 @@ LOAD c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-elf.a
 END GROUP
 OUTPUT(dist/XC16_dsPIC30F4012/production/modele.X.production.elf elf32-pic30)
-LOAD /CW/_FGS
+LOAD /CW/_FGSP¢ð
 LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000138        0x367
+                  0x000180        0x393
  .debug_pubtypes
-                  0x000138         0xe1 build/XC16_dsPIC30F4012/production/main.o
+                  0x000180        0x10d build/XC16_dsPIC30F4012/production/main.o
  .debug_pubtypes
-                  0x000219         0x64 build/XC16_dsPIC30F4012/production/lib/periph_pwm.o
+                  0x00028d         0x64 build/XC16_dsPIC30F4012/production/lib/periph_pwm.o
  .debug_pubtypes
-                  0x00027d         0x95 build/XC16_dsPIC30F4012/production/lib/periph_tmr.o
+                  0x0002f1         0x95 build/XC16_dsPIC30F4012/production/lib/periph_tmr.o
  .debug_pubtypes
-                  0x000312         0xb6 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
+                  0x000386         0xb6 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
  .debug_pubtypes
-                  0x0003c8         0x99 build/XC16_dsPIC30F4012/production/lib/periph_adc.o
+                  0x00043c         0x99 build/XC16_dsPIC30F4012/production/lib/periph_adc.o
  .debug_pubtypes
-                  0x000461         0x3e build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
+                  0x0004d5         0x3e build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
 
 __c30_signature
-                  0x00049f         0x3c
+                  0x000513         0x4e
  __c30_signature
-                  0x00049f          0x6 build/XC16_dsPIC30F4012/production/main.o
+                  0x000513          0x6 build/XC16_dsPIC30F4012/production/main.o
  __c30_signature
-                  0x0004a5          0x6 build/XC16_dsPIC30F4012/production/lib/periph_pwm.o
+                  0x000519          0x6 build/XC16_dsPIC30F4012/production/lib/periph_pwm.o
  __c30_signature
-                  0x0004ab          0x6 build/XC16_dsPIC30F4012/production/lib/periph_tmr.o
+                  0x00051f          0x6 build/XC16_dsPIC30F4012/production/lib/periph_tmr.o
  __c30_signature
-                  0x0004b1          0x6 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
+                  0x000525          0x6 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
  __c30_signature
-                  0x0004b7          0x6 build/XC16_dsPIC30F4012/production/lib/periph_adc.o
+                  0x00052b          0x6 build/XC16_dsPIC30F4012/production/lib/periph_adc.o
  __c30_signature
-                  0x0004bd          0x6 build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
+                  0x000531          0x6 build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
  __c30_signature
-                  0x0004c3          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(crt0_standard.o)
+                  0x000537          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(crt0_standard.o)
  __c30_signature
-                  0x0004c9          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(data_init_standard.o)
+                  0x00053d          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(data_init_standard.o)
  __c30_signature
-                  0x0004cf          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixsfsi.XX_o)
+                  0x000543          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(fixsfsi.XX_o)
  __c30_signature
-                  0x0004d5          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
+                  0x000549          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(funpack.XX_o)
+ __c30_signature
+                  0x00054f          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(modsi3.XX_o)
+ __c30_signature
+                  0x000555          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(umodsi3.XX_o)
+ __c30_signature
+                  0x00055b          0x6 c:/program files/microchip/xc16/v2.00/bin/bin/../../lib\libc99-pic30-elf.a(udivsi3.XX_o)
 
-.nbss               0x0800          0x4
- .nbss              0x0800          0x4 build/XC16_dsPIC30F4012/production/main.o
+.nbss               0x0800         0x10
+ .nbss              0x0800         0x10 build/XC16_dsPIC30F4012/production/main.o
                     0x0800                  _stateR
                     0x0801                  _stateN
                     0x0802                  _stateB
+                    0x0804                  _myKeyboard
 
-.ndata              0x0804          0x6
- .ndata             0x0804          0x4 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
- .ndata             0x0808          0x2 build/XC16_dsPIC30F4012/production/main.o
-                    0x0808                  _contrast
+.ndata              0x0810          0x6
+ .ndata             0x0810          0x4 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
+ .ndata             0x0814          0x2 build/XC16_dsPIC30F4012/production/main.o
+                    0x0814                  _contrast
 
-.nbss               0x080a          0x2
- .nbss              0x080a          0x2 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
+.nbss               0x0816          0x2
+ .nbss              0x0816          0x2 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
 
 .config_ICS       0xf8000c          0x2
  .config_ICS      0xf8000c          0x2 build/XC16_dsPIC30F4012/production/main.o
@@ -1285,55 +1327,55 @@ __c30_signature
  .ivt._T1Interrupt
                   0x00001a          0x2 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
 
-.const              0x8518        0x180 load address 0x000518  
- .const             0x8518         0xee build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
- .const             0x8606         0x92 build/XC16_dsPIC30F4012/production/main.o
+.const              0x8578        0x16a load address 0x000578  
+ .const             0x8578         0xd8 build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
+ .const             0x8650         0x92 build/XC16_dsPIC30F4012/production/main.o
 
-.text             0x000698        0x8fc
- .text            0x000698        0x330 build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
-                  0x000698                  _menu_principale
-                  0x000918                  _detect_button_press
-                  0x00095a                  _loading_X_simulator
-                  0x000998                  _delay_en_s
- .text            0x0009c8        0x268 build/XC16_dsPIC30F4012/production/lib/periph_adc.o
-                  0x0009c8                  _InitADCx
-                  0x0009e6                  _InitADC0
-                  0x000a04                  _InitADC0and1
-                  0x000a24                  _InitADC0to3
-                  0x000a46                  _InitADC4and5
-                  0x000a68                  _InitADC0Seq0to4
-                  0x000a8a                  _InitADC0Seq0to5
-                  0x000aac                  _StartADCx
-                  0x000ae8                  _StartADC0
-                  0x000b02                  _StartADC0and1
-                  0x000b28                  _StartADC0to3
-                  0x000b66                  _StartADC4and5
-                  0x000b8c                  _StartADC0seq0to4
-                  0x000bd8                  _StartADC0seq0to5
- .text            0x000c30        0x1b8 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
-                  0x000c30                  __wait10mus
-                  0x000c50                  __InitSPIEmu
-                  0x000c6c                  __WriteToSpi
-                  0x000cac                  __SPIWritten
-                  0x000cb4                  __LCDCmdWrite
-                  0x000ce2                  _InitLCD
-                  0x000d2c                  _LCDDataWrite
-                  0x000d54                  _LCDWriteStr
-                  0x000d80                  _LCDGoto
-                  0x000db6                  _LCDContrastSet
- .text            0x000de8        0x120 build/XC16_dsPIC30F4012/production/main.o
-                  0x000de8                  _initCN
-                  0x000df4                  _CNInterruptEnable
-                  0x000dfe                  _init_pins
-                  0x000e10                  _main
- .text            0x000f08         0x58 build/XC16_dsPIC30F4012/production/lib/periph_pwm.o
-                  0x000f08                  _InitPWM
-                  0x000f2a                  _PWMEnable
-                  0x000f44                  _PWM1PulseWidth
-                  0x000f52                  _PWM2PulseWidth
- .text            0x000f60         0x34 build/XC16_dsPIC30F4012/production/lib/periph_tmr.o
-                  0x000f60                  _InitTimer3
-                  0x000f7e                  _Timer3InterruptEnable
+.text             0x0006e2        0x88c
+ .text            0x0006e2        0x2f2 build/XC16_dsPIC30F4012/production/lib/fonctions_sup.o
+                  0x0006e2                  _menu_principale
+                  0x000924                  _detect_button_press
+                  0x000966                  _loading_X_simulator
+                  0x0009a4                  _delay_en_s
+ .text            0x0009d4        0x268 build/XC16_dsPIC30F4012/production/lib/periph_adc.o
+                  0x0009d4                  _InitADCx
+                  0x0009f2                  _InitADC0
+                  0x000a10                  _InitADC0and1
+                  0x000a30                  _InitADC0to3
+                  0x000a52                  _InitADC4and5
+                  0x000a74                  _InitADC0Seq0to4
+                  0x000a96                  _InitADC0Seq0to5
+                  0x000ab8                  _StartADCx
+                  0x000af4                  _StartADC0
+                  0x000b0e                  _StartADC0and1
+                  0x000b34                  _StartADC0to3
+                  0x000b72                  _StartADC4and5
+                  0x000b98                  _StartADC0seq0to4
+                  0x000be4                  _StartADC0seq0to5
+ .text            0x000c3c        0x1b8 build/XC16_dsPIC30F4012/production/lib/LCDv3.o
+                  0x000c3c                  __wait10mus
+                  0x000c5c                  __InitSPIEmu
+                  0x000c78                  __WriteToSpi
+                  0x000cb8                  __SPIWritten
+                  0x000cc0                  __LCDCmdWrite
+                  0x000cee                  _InitLCD
+                  0x000d38                  _LCDDataWrite
+                  0x000d60                  _LCDWriteStr
+                  0x000d8c                  _LCDGoto
+                  0x000dc2                  _LCDContrastSet
+ .text            0x000df4         0xee build/XC16_dsPIC30F4012/production/main.o
+                  0x000df4                  _initCN
+                  0x000e00                  _CNInterruptEnable
+                  0x000e0a                  _init_pins
+                  0x000e1c                  _main
+ .text            0x000ee2         0x58 build/XC16_dsPIC30F4012/production/lib/periph_pwm.o
+                  0x000ee2                  _InitPWM
+                  0x000f04                  _PWMEnable
+                  0x000f1e                  _PWM1PulseWidth
+                  0x000f2c                  _PWM2PulseWidth
+ .text            0x000f3a         0x34 build/XC16_dsPIC30F4012/production/lib/periph_tmr.o
+                  0x000f3a                  _InitTimer3
+                  0x000f58                  _Timer3InterruptEnable
 
-.dinit            0x000f94         0x20
- .dinit           0x000f94         0x20 data_init
+.dinit            0x000f6e         0x20
+ .dinit           0x000f6e         0x20 data_init
