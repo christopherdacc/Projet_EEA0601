@@ -81,9 +81,9 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
       Le code fonctionne a nouveau.
       Ajout de la fonction menu_principale() pour afficher le menu avec les different choix.
       Programmation de la navigation du curseur pour selectionner 1 des 3 choix avec prog de la saisier du choix 1 (Actions).
-      Pour la prochaine séance : * Essayer de remplacer les statusB, statusN et statusR par la structure keyboard.
-                                 * Implémanter cette structure dans la fonction menu_principale().
-                                 * Continuer la programmation de l'affichage.
+* Pour la prochaine séance :        * Essayer de remplacer les statusB, statusN et statusR par la structure keyboard.
+                                    * Implémanter cette structure dans la fonction menu_principale().
+                                    * Continuer la programmation de l'affichage.
           
 
 
