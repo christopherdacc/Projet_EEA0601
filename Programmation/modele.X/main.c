@@ -77,20 +77,13 @@
 /******************************************************************************/
 /* Global Variable Declaration                                                */
 /******************************************************************************/
-int contrast=35; //0 pour faible et 63 pour max
+int contrast=40; //0 pour faible et 63 pour max
 bool stateR = false;
 bool stateN = false;
 bool stateB = false;
-
-typedef struct{
-    int upState:2;
-    int downState:2;
-    int enterState:2;
-    int upEdge:2;
-    int downEdge:2;
-    int enterEdge:2;
-}Keyboard;
+Keyboard *myKeyboardptr;
 Keyboard myKeyboard;
+
 
 /******************************************************************************/
 /* Routines d'interruptions                                                   */
@@ -131,31 +124,37 @@ void __attribute__((__interrupt__,no_auto_psv)) _T3Interrupt( void )
 /*----------------------------------------------------------------------------*/
 
 void __attribute__(( __interrupt__ ,__auto_psv__ )) _CNInterrupt(void) {
-
     
     if(detect_button_press(1))
     {
-        stateR=true;
+        //stateR=true;
+        myKeyboardptr->upState=1;
+        
     }
     else if(!detect_button_press(1))
     {
-        stateR=false;
+        //stateR=false;
+        myKeyboardptr->upState=0;
     }
     if(detect_button_press(2))
     {
-        stateN=true;
+        //stateN=true;
+        myKeyboardptr->downState=1;
     }
     else if(!detect_button_press(2))
     {
-        stateN=false;
+        //stateN=false;
+        myKeyboardptr->downState=0;
     }
     if(detect_button_press(3))
     {
-        stateB=true;
+        //stateB=true;
+        myKeyboardptr->enterState=1;
     }
     else if(!detect_button_press(3))
     {
-        stateB=false;
+        //stateB=false;
+        myKeyboardptr->enterState=0;
     }
   
     
@@ -215,7 +214,6 @@ int16_t main(void)
     /* -----------------------------------------------------------------------*/
     init_pins();                        //initialisation des pins
     InitLCD();                          //initialisation de l'ecran
-    
     LCDDisplayOn();                     //on allume l'ecran
     LCDContrastSet(contrast);           //on defini la luminosite avec contrast 
     LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
@@ -234,25 +232,35 @@ int16_t main(void)
     initCN();
     IFS0bits.CNIF=0;
     CNInterruptEnable();
-    menu_principale(&stateB,&stateN,&stateR);
+    myKeyboardptr=&myKeyboard;
+    menu_principale(myKeyboardptr);
      //fin init de l'interruption de CN
     LCDClearDisplay();
+    
     do{                                 //boucle d'initiation de test
         
-        if (stateB==true)
+        if (myKeyboardptr->enterState==1)
         {
             LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
             LCDWriteStr("Button 1 = 1");
         }
-        else if (stateN==true)
+        else if (myKeyboardptr->downState==1)
         {
             LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 0,0
             LCDWriteStr("Button 2 = 1");
         }  
-        else if (stateR==true)
+        else if (myKeyboardptr->upState==1)
         {
             LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 0,0
             LCDWriteStr("Button 3 = 1");
+        }
+        else if (myKeyboardptr->upState==2 && myKeyboardptr->upEdge==1){
+            LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+            LCDWriteStr("XXXXXXXX");
+            LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+            LCDWriteStr("XXXXXXXX");
+            LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+            LCDWriteStr("XXXXXXXX");
         }
         else
         {
