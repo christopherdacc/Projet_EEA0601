@@ -6,7 +6,7 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
 "Séances de travail surveillées et supplémentaires avec tâches réalisées"
 
 * Séance 1 (24/01/2024):
-      Explication du projet par les professeurs.
+      Explication du projet par les professeurs.\n
   
 * Séance 2 (31/01/2024):
       Branchement d'un afficheur LCD (EA DOGM163W-A) et allumage du rétroéclairage.
