@@ -84,6 +84,15 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
 * Pour la prochaine séance :        - Essayer de remplacer les statusB, statusN et statusR par la structure keyboard.
                                     - Implémanter cette structure dans la fonction menu_principale().
                                     - Continuer la programmation de l'affichage.
+  
+* Séance 12.1 (13/04/2024):
+      On a realiser les taches pécedantes (remplacement statusB.../implementer la struct keyboard.../ continuer la programmation de l'affichage).
+      On a essayer d'implémenter les strcutures Menu, MenuItem et MenuValue mais on a pas réussi.
+
+* Séance 12.2 (16/04/2024):
+      On a continuer l'affichage du menu et differente options du menu avec des if et else if.
+      On a réessayer d'implenter les structures Menu, MenuItem et MenuValue maus on a toujours pas réussi.
+      On a essayer d'ajouter le keybord->upstate=2 pour une appuie de 2s sur le bouton rouger, mais on a pas réussi.
           
 
 
