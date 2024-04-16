@@ -67,6 +67,7 @@
 #include "./lib/periph_pwm.h"
 #include "./lib/LCDv3.h"
 #include "./lib/fonctions_sup.h"
+#include "./lib/ticks.h"
 
 /******************************************************************************/
 /* Définition des équivalences                                                */
@@ -77,10 +78,7 @@
 /******************************************************************************/
 /* Global Variable Declaration                                                */
 /******************************************************************************/
-int contrast=40; //0 pour faible et 63 pour max
-bool stateR = false;
-bool stateN = false;
-bool stateB = false;
+int contrast=45; //0 pour faible et 63 pour max
 Keyboard *myKeyboardptr;
 Keyboard myKeyboard;
 
@@ -127,33 +125,36 @@ void __attribute__(( __interrupt__ ,__auto_psv__ )) _CNInterrupt(void) {
     
     if(detect_button_press(1))
     {
-        //stateR=true;
-        myKeyboardptr->upState=1;
+        initTime();
+        Time tm6 = getTime();
+        //myKeyboardptr->upState=1;
+        if (!isTimeOver(tm6,2000)==false && detect_button_press(1)){
+            myKeyboardptr->upState=2;
+        }
+        else if (!isTimeOver(tm6,2000)==true && detect_button_press(1)) {
+            myKeyboardptr->upState=1;
+        }
+        
         
     }
     else if(!detect_button_press(1))
     {
-        //stateR=false;
         myKeyboardptr->upState=0;
     }
     if(detect_button_press(2))
     {
-        //stateN=true;
         myKeyboardptr->downState=1;
     }
     else if(!detect_button_press(2))
     {
-        //stateN=false;
         myKeyboardptr->downState=0;
     }
     if(detect_button_press(3))
     {
-        //stateB=true;
         myKeyboardptr->enterState=1;
     }
     else if(!detect_button_press(3))
     {
-        //stateB=false;
         myKeyboardptr->enterState=0;
     }
   
@@ -254,7 +255,7 @@ int16_t main(void)
             LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 0,0
             LCDWriteStr("Button 3 = 1");
         }
-        else if (myKeyboardptr->upState==2 && myKeyboardptr->upEdge==1){
+        else if (myKeyboardptr->upState==1 && myKeyboardptr->downState==1){
             LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
             LCDWriteStr("XXXXXXXX");
             LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 0,0

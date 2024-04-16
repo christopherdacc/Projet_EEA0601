@@ -14,5 +14,6 @@ void menu_principale(Keyboard *keyboard);
 int detect_button_press(int button);
 void loading_X_simulator(int *contrast);
 void delay_en_s(float time);
+void _wait10mus(unsigned int tenmus);
 
 #endif
