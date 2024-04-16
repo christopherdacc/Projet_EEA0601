@@ -93,7 +93,8 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
       On a continuer l'affichage du menu et differente options du menu avec des if et else if.
       On a réessayer d'implenter les structures Menu, MenuItem et MenuValue maus on a toujours pas réussi.
       On a essayer d'ajouter le keybord->upstate=2 pour une appuie de 2s sur le bouton rouger, mais on a pas réussi.
-          
+
+* To do: try using macros to simplify and reduce memory usage.
 
 
 
