@@ -78,7 +78,7 @@
 /******************************************************************************/
 /* Global Variable Declaration                                                */
 /******************************************************************************/
-int contrast=45; //0 pour faible et 63 pour max
+#define CONTRAST 35 //0 pour faible et 63 pour max
 Keyboard *myKeyboardptr;
 Keyboard myKeyboard;
 
@@ -125,36 +125,32 @@ void __attribute__(( __interrupt__ ,__auto_psv__ )) _CNInterrupt(void) {
     
     if(detect_button_press(1))
     {
-        initTime();
-        Time tm6 = getTime();
-        //myKeyboardptr->upState=1;
-        if (!isTimeOver(tm6,2000)==false && detect_button_press(1)){
-            myKeyboardptr->upState=2;
-        }
-        else if (!isTimeOver(tm6,2000)==true && detect_button_press(1)) {
-            myKeyboardptr->upState=1;
-        }
-        
-        
+        myKeyboardptr->upEdge=1;
+        myKeyboardptr->upState=1;
     }
     else if(!detect_button_press(1))
     {
+        myKeyboardptr->upEdge=0;
         myKeyboardptr->upState=0;
     }
     if(detect_button_press(2))
     {
+        myKeyboardptr->downEdge=1;
         myKeyboardptr->downState=1;
     }
     else if(!detect_button_press(2))
     {
+        myKeyboardptr->downEdge=0;
         myKeyboardptr->downState=0;
     }
     if(detect_button_press(3))
     {
+        myKeyboardptr->enterEdge=1;
         myKeyboardptr->enterState=1;
     }
     else if(!detect_button_press(3))
     {
+        myKeyboardptr->enterEdge=0;
         myKeyboardptr->enterState=0;
     }
   
@@ -213,10 +209,11 @@ int16_t main(void)
     /* -----------------------------------------------------------------------*/
     /* Code principal de l'application                                                  */
     /* -----------------------------------------------------------------------*/
+    initTime();
     init_pins();                        //initialisation des pins
     InitLCD();                          //initialisation de l'ecran
     LCDDisplayOn();                     //on allume l'ecran
-    LCDContrastSet(contrast);           //on defini la luminosite avec contrast 
+    LCDContrastSet(CONTRAST);           //on defini la luminosite avec contrast 
     LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
     LCDWriteStr("XXXXXXXXXXXXXXXX");
     LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
@@ -239,23 +236,13 @@ int16_t main(void)
     LCDClearDisplay();
     
     do{                                 //boucle d'initiation de test
-        
-        if (myKeyboardptr->enterState==1)
+        Time tm7 = getTime();
+        while (myKeyboardptr->enterEdge==1)
         {
             LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
             LCDWriteStr("Button 1 = 1");
         }
-        else if (myKeyboardptr->downState==1)
-        {
-            LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 0,0
-            LCDWriteStr("Button 2 = 1");
-        }  
-        else if (myKeyboardptr->upState==1)
-        {
-            LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 0,0
-            LCDWriteStr("Button 3 = 1");
-        }
-        else if (myKeyboardptr->upState==1 && myKeyboardptr->downState==1){
+        while (myKeyboardptr->upEdge==1 && myKeyboardptr->downEdge==1){
             LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
             LCDWriteStr("XXXXXXXX");
             LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 0,0
@@ -263,7 +250,22 @@ int16_t main(void)
             LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 0,0
             LCDWriteStr("XXXXXXXX");
         }
-        else
+        while (myKeyboardptr->downEdge==1)
+        {
+            LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+            LCDWriteStr("Button 2 = 1");
+        }  
+        while (myKeyboardptr->upEdge==1)
+        { 
+            LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+            LCDWriteStr("Button 3 = 1");
+            
+            while(isTimeOver(tm7,2000)&&detect_button_press(1)){
+                LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+                LCDWriteStr("Button 3 = 2");     
+            }   
+        }
+        while(myKeyboardptr->downEdge==0&&myKeyboardptr->upEdge==0&&myKeyboardptr->enterEdge==0)
         {
             LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
             LCDWriteStr("Button 1 = 0");
