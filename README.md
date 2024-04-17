@@ -96,5 +96,13 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
 
 * To do: try using macros to simplify and reduce memory usage.
 
+* Séance 13 (17/04/2024):
+      On a utiliser macros (#define) pour l'operation moyenne%3
+      On pu utiliser ticks.c pour pouvoir determiner l'appui de 2s sur un bouton.
+      On a continuer la partie parametres->reglage detection obs pour essayer d'afficher un chiffre et l'incrémenter mais l'addition de chiffre et considere comme un char.
+      On a vite fait compris le fonctionnement des differentes struct du menu(Menu, MenuItem et MenuValue) et l'utilisation d'une array pour stocker les differents MenuItems.
+
+* To do: implementer les 3 structures du menu a la fonction menu_principale, réessayer la configuration de l'affichage d'un int modifiable sur l'ecran,
+
 
 
