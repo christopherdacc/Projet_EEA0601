@@ -10,6 +10,7 @@
 #include "ticks.h"
 
 #define OPERATION(moyenne) moyenne%3
+#define OPERATION2(distcount) distcount%10
 
 #define BUTTON1_PIN   PORTBbits.RB0  // Bouton 1 connecter a RB0
 #define BUTTON2_PIN   PORTBbits.RB1  // Bouton 2 connecter a RB1
@@ -20,7 +21,10 @@ void menu_principale(Keyboard *keyboard)
     int choix_men=0;
     int exiter=0;
     long int moyenne=201;
-    int distance=5;
+    int savedist1=0;
+    int savedist2=0;
+    char distance[100] = {'0','1','2','3','4','5','6','7','8','9'}; 
+    int distcount=0;
     LCDClearDisplay();
     LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
     LCDWriteStr("XXXXXXXXXXXXXXXX");
@@ -42,29 +46,29 @@ void menu_principale(Keyboard *keyboard)
             else if(OPERATION(moyenne)==0)
             {
                 LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
-                LCDWriteStr(">Actions");
+                LCDWriteStr(">Actions        ");
                 LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                LCDWriteStr(" Parametres");
+                LCDWriteStr(" Parametres     ");
                 LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                LCDWriteStr(" Aff. Etat");
+                LCDWriteStr(" Aff. Etat      ");
             }
             else if (OPERATION(moyenne)==1)
             {
                 LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
-                LCDWriteStr(" Actions");
+                LCDWriteStr(" Actions        ");
                 LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                LCDWriteStr(">Parametres");
+                LCDWriteStr(">Parametres     ");
                 LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                LCDWriteStr(" Aff. Etat");
+                LCDWriteStr(" Aff. Etat      ");
             }
             else if (OPERATION(moyenne)==2)
             {
                 LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
-                LCDWriteStr(" Actions");
+                LCDWriteStr(" Actions        ");
                 LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                LCDWriteStr(" Parametres");
+                LCDWriteStr(" Parametres     ");
                 LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                LCDWriteStr(">Aff. Etat");
+                LCDWriteStr(">Aff. Etat      ");
             } 
         }while(choix_men==0);
         LCDClearDisplay();
@@ -78,29 +82,29 @@ void menu_principale(Keyboard *keyboard)
                 else if (OPERATION(moyenne)==0)
                 {
                     LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
-                    LCDWriteStr(">Marche Lente");
+                    LCDWriteStr(">Marche Lente   ");
                     LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                    LCDWriteStr(" Marche Rapide");
+                    LCDWriteStr(" Marche Rapide  ");
                     LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                    LCDWriteStr(" Mode Manuel");
+                    LCDWriteStr(" Mode Manuel    ");
                 }
                 else if  (OPERATION(moyenne)==1)
                 {
                     LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
-                    LCDWriteStr(" Marche Lente");
+                    LCDWriteStr(" Marche Lente   ");
                     LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                    LCDWriteStr(">Marche Rapide");
+                    LCDWriteStr(">Marche Rapide  ");
                     LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                    LCDWriteStr(" Mode Manuel");
+                    LCDWriteStr(" Mode Manuel    ");
                 }
                 else if (OPERATION(moyenne)==2)
                 {
                     LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
-                    LCDWriteStr(" Marche Lente");
+                    LCDWriteStr(" Marche Lente   ");
                     LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                    LCDWriteStr(" Marche Rapide");
+                    LCDWriteStr(" Marche Rapide  ");
                     LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                    LCDWriteStr(">Mode Manuel");
+                    LCDWriteStr(">Mode Manuel    ");
                 }
                 
                 if(keyboard->upEdge==1 && keyboard->downEdge==1)
@@ -160,17 +164,49 @@ void menu_principale(Keyboard *keyboard)
             if (OPERATION(moyenne)==0){
                 
                 do{
-                    if(keyboard->enterEdge==1){choix_men+=1;delay_en_s(0.2);}
-                    else if(keyboard->downEdge==1){distance+=1;delay_en_s(0.2);}
-                    else if(keyboard->upEdge==1){distance-=1;delay_en_s(0.2);}
+                    if(keyboard->enterEdge==1){LCDClearDisplay();choix_men=0;delay_en_s(0.2);}
+                    else if(keyboard->downEdge==1){distcount+=1;delay_en_s(0.2);}
+                    else if(keyboard->upEdge==1){distcount-=1;delay_en_s(0.2);}
                     
-                    LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
-                    LCDWriteStr("[Detection Obs]");
-                    LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                    LCDWriteStr("Dis: ");
-                    LCDDataWrite(distance);
-                    LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                    LCDWriteStr("Enter: Retour");
+                    if (distcount<10){
+                        LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+                        LCDWriteStr("[Detection Obs]");
+                        LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                        LCDWriteStr("Dis:            ");
+                        LCDGoto(1,5);
+                        LCDDataWrite(distance[distcount]);
+                        LCDGoto(1,8);
+                        LCDWriteStr("cm       ");
+                        LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                        LCDWriteStr("Enter: Retour");
+                    }
+                    else if (distcount<0){
+                        LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+                        LCDWriteStr("!Warning No Neg!");
+                        LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                        LCDWriteStr("  !!!Values!!!  ");
+                        LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                        LCDWriteStr("                ");
+                        delay_en_s(1.5);
+                        distcount=0;
+                    }
+                    else if (distcount>9){
+                        LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+                        LCDWriteStr("[Detection Obs]");
+                        LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                        LCDWriteStr("Dis: ");
+                        savedist1=distcount/10;
+                        savedist2 = OPERATION2(distcount);
+                        LCDGoto(1,5);
+                        LCDDataWrite(distance[savedist1]);
+                        LCDGoto(1,6);
+                        LCDDataWrite(distance[savedist2]);
+                        LCDGoto(1,8);
+                        LCDWriteStr("cm       ");
+                        LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                        LCDWriteStr("Enter: Retour");
+                    }
+                    
                     
                     
                 }while(choix_men==2);

@@ -78,7 +78,7 @@
 /******************************************************************************/
 /* Global Variable Declaration                                                */
 /******************************************************************************/
-#define CONTRAST 35 //0 pour faible et 63 pour max
+#define CONTRAST 40 //0 pour faible et 63 pour max
 Keyboard *myKeyboardptr;
 Keyboard myKeyboard;
 
