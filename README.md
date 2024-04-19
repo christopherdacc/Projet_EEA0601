@@ -104,5 +104,9 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
 
 * To do: implementer les 3 structures du menu a la fonction menu_principale, réessayer la configuration de l'affichage d'un int modifiable sur l'ecran,
 
+* Séance 13.1 (19/04/2024):
+      On a réussi a configurer l'affichage d'un int qu'on peut incrémenter et décrémenter a l'aide des boutons pour la partie Parametres->Detection obstacle.
+  
+
 
 
