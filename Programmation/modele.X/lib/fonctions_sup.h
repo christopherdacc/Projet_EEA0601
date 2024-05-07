@@ -21,7 +21,7 @@ struct menu{
     Menu *root;         //menu precedent
     MenuItem *items;    //option du menu specifique
     short offset:6;            //decalage verticale de la selection
-    short selected:2;          //indique l'option selectionner
+    short selected:4;          //indique l'option selectionner
 };
 
 struct menuitem{

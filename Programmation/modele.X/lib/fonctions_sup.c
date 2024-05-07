@@ -41,7 +41,6 @@ void menu_principale(Keyboard *keyboard)
     initTime();
     int choix_men=0;
     int exiter=0;
-    long int moyenne=201;
     int savedist1=0;
     int savedist2=0;
     char distance[100] = {'0','1','2','3','4','5','6','7','8','9'}; 
@@ -121,20 +120,26 @@ void menu_principale(Keyboard *keyboard)
     //boucle menu principale
     //operation=OPERATION(moyenne);
     do{
+        
         exiter=0;
         do{
             if(keyboard->enterEdge==1){choix_men+=1;delay_en_s(0.2);}
             else if(keyboard->downEdge==1){
-                moyenne+=1;
+                rootMenu.selected+=1;
+                if (rootMenu.selected>2){
+                    rootMenu.selected=0;
+                }
                 delay_en_s(0.2);
             }
             else if(keyboard->upEdge==1){
-                moyenne-=1;
+                rootMenu.selected-=1;
+                if (rootMenu.selected<0){
+                    rootMenu.selected=2;
+                }
                 delay_en_s(0.2);
             }
-            else if(OPERATION(moyenne)==0)
+            else if(rootMenu.selected==0)
             {
-                //rootMenu.selected=0;
                 LCDGoto(0,0);
                 LCDWriteStr(">");
                 LCDGoto(0,1);                       //Commence a ecrire sur l'ecran a la case 0,0
@@ -148,9 +153,8 @@ void menu_principale(Keyboard *keyboard)
                 LCDGoto(2,1);                       //Commence a ecrire sur l'ecran a la case 1,0
                 LCDWriteStr(rootItems[2].label);
             }
-            else if (OPERATION(moyenne)==1)
+            else if (rootMenu.selected==1)
             {
-                //rootMenu.selected=1;
                 LCDGoto(0,0); 
                 LCDWriteStr(" ");
                 LCDGoto(0,1);                       //Commence a ecrire sur l'ecran a la case 0,0
@@ -164,9 +168,8 @@ void menu_principale(Keyboard *keyboard)
                 LCDGoto(2,1);                       //Commence a ecrire sur l'ecran a la case 1,0
                 LCDWriteStr(rootItems[2].label);
             }
-            else if (OPERATION(moyenne)==2)
+            else if (rootMenu.selected==2)
             {
-                //rootMenu.selected=2;
                 LCDGoto(0,0); 
                 LCDWriteStr(" ");
                 LCDGoto(0,1);                       //Commence a ecrire sur l'ecran a la case 0,0
@@ -182,14 +185,13 @@ void menu_principale(Keyboard *keyboard)
             } 
         }while(choix_men==0);
         LCDClearDisplay();
+        
         if(rootMenu.selected==0)                            //Action
         {
-            moyenne = 201;
             do{
                 if(keyboard->enterEdge==1){
-                    
                     if (actionMenu.selected==3){
-                        moyenne=201;
+                        actionMenu.selected=0;
                         choix_men=0;
                         delay_en_s(0.2);
                     }
@@ -198,11 +200,22 @@ void menu_principale(Keyboard *keyboard)
                         delay_en_s(0.2);
                     } 
                 }
-                else if(keyboard->downEdge==1){moyenne+=1;delay_en_s(0.2);}
-                else if(keyboard->upEdge==1){moyenne-=1;delay_en_s(0.2);}
-                else if (OPERATION3(moyenne)==1)
+                else if(keyboard->downEdge==1){
+                    actionMenu.selected+=1;
+                    if (actionMenu.selected>3){
+                        actionMenu.selected=0;
+                    }
+                    delay_en_s(0.2);
+                }
+                else if(keyboard->upEdge==1){
+                    actionMenu.selected-=1;
+                    if (actionMenu.selected<0){
+                        actionMenu.selected=3;
+                    }
+                    delay_en_s(0.2);
+                }
+                else if (actionMenu.selected==0)
                 {
-                    actionMenu.selected=0;
                     actionMenu.offset=0;
                     LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
                     LCDWriteStr(">");
@@ -217,9 +230,8 @@ void menu_principale(Keyboard *keyboard)
                     LCDGoto(2,1);                       //Commence a ecrire sur l'ecran a la case 1,0
                     LCDWriteStr(actionItems[2].label);
                 }
-                else if  (OPERATION3(moyenne)==2)
+                else if  (actionMenu.selected==1)
                 {
-                    actionMenu.selected=1;
                     actionMenu.offset=0;
                     LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 1,0
                     LCDWriteStr(" ");
@@ -234,9 +246,8 @@ void menu_principale(Keyboard *keyboard)
                     LCDGoto(2,1);                       //Commence a ecrire sur l'ecran a la case 1,0
                     LCDWriteStr(actionItems[2].label);
                 }
-                else if (OPERATION3(moyenne)==3)
+                else if (actionMenu.selected==2)
                 {
-                    actionMenu.selected=2;
                     actionMenu.offset=0;
                     LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 1,0
                     LCDWriteStr(" ");
@@ -251,9 +262,8 @@ void menu_principale(Keyboard *keyboard)
                     LCDGoto(2,1);                       //Commence a ecrire sur l'ecran a la case 1,0
                     LCDWriteStr(actionItems[2].label);
                 }
-                else if (OPERATION3(moyenne)==0)
+                else if (actionMenu.selected==3)
                 {
-                    actionMenu.selected=3;
                     actionMenu.offset=1;
                     LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 1,0
                     LCDWriteStr(" ");
@@ -270,58 +280,108 @@ void menu_principale(Keyboard *keyboard)
                 }
                 
             }while(choix_men==1);
+            choix_men=0;
         }
         else if (rootMenu.selected==1)                  //Parametres
         {
-            moyenne = 201;
             do{ 
-                if(keyboard->enterEdge==1){choix_men+=1;delay_en_s(0.2);}
-                else if(keyboard->downEdge==1){moyenne+=1;delay_en_s(0.2);}
-                else if(keyboard->upEdge==1){moyenne-=1;delay_en_s(0.2);}
-                else if (OPERATION(moyenne)==0)
+                if(keyboard->enterEdge==1){
+                    if (paramMenu.selected==3){
+                        paramMenu.selected=0;
+                        choix_men=0;
+                        delay_en_s(0.2);
+                    }
+                    else {
+                        choix_men+=1;
+                        delay_en_s(0.2);
+                    }
+                }
+                else if(keyboard->downEdge==1){
+                    paramMenu.selected+=1;
+                    if (paramMenu.selected>3){
+                        paramMenu.selected=0;
+                    }
+                    delay_en_s(0.2);
+                }
+                else if(keyboard->upEdge==1){
+                    paramMenu.selected-=1;
+                    if (paramMenu.selected<0){
+                        paramMenu.selected=3;
+                    }
+                    delay_en_s(0.2);
+                }
+                else if (paramMenu.selected==0)
                 {
+                    paramMenu.offset=0;
                     LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
-                    LCDWriteStr(">Detection Obs");
+                    LCDWriteStr(">");
+                    LCDGoto(0,1);                       //Commence a ecrire sur l'ecran a la case 0,0
+                    LCDWriteStr(paramItems[0].label);
                     LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                    LCDWriteStr(" Reglage PID");
+                    LCDWriteStr(" ");
+                    LCDGoto(1,1);                       //Commence a ecrire sur l'ecran a la case 0,0
+                    LCDWriteStr(paramItems[1].label);
                     LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                    LCDWriteStr(" Vitesse");
+                    LCDWriteStr(" ");
+                    LCDGoto(2,1);                       //Commence a ecrire sur l'ecran a la case 1,0
+                    LCDWriteStr(paramItems[2].label);
                 }
-                else if (OPERATION(moyenne)==1)
+                else if (paramMenu.selected==1)
                 {
-                    LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
-                    LCDWriteStr(" Detection Obs");
+                    paramMenu.offset=0;
+                    LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                    LCDWriteStr(" ");
+                    LCDGoto(0,1);                       //Commence a ecrire sur l'ecran a la case 0,0
+                    LCDWriteStr(paramItems[0].label);
                     LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                    LCDWriteStr(">Reglage PID");
+                    LCDWriteStr(">");
+                    LCDGoto(1,1);                       //Commence a ecrire sur l'ecran a la case 1,0
+                    LCDWriteStr(paramItems[1].label);
                     LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                    LCDWriteStr(" Vitesse");
+                    LCDWriteStr(" ");
+                    LCDGoto(2,1);                       //Commence a ecrire sur l'ecran a la case 1,0
+                    LCDWriteStr(paramItems[2].label);
                 }
-                else if (OPERATION(moyenne)==2)
+                else if (paramMenu.selected==2)
                 {
-                    LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
-                    LCDWriteStr(" Detection Obs");
+                    paramMenu.offset=0;
+                    LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                    LCDWriteStr(" ");
+                    LCDGoto(0,1);                       //Commence a ecrire sur l'ecran a la case 0,0
+                    LCDWriteStr(paramItems[0].label);
                     LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                    LCDWriteStr(" Reglage PID");
+                    LCDWriteStr(" ");
+                    LCDGoto(1,1);                       //Commence a ecrire sur l'ecran a la case 1,0
+                    LCDWriteStr(paramItems[1].label);
                     LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                    LCDWriteStr(">Vitesse");
+                    LCDWriteStr(">");
+                    LCDGoto(2,1);                       //Commence a ecrire sur l'ecran a la case 1,0
+                    LCDWriteStr(paramItems[2].label);
                 }
-              
-                if (keyboard->upEdge==1 && keyboard->downEdge==1)
+                else if (paramMenu.selected==3)
                 {
-                    choix_men-=1;
-                    if (choix_men==0){choix_men=0;}
-                    LCDClearDisplay();
+                    paramMenu.offset=1;
+                    LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                    LCDWriteStr(" ");
+                    LCDGoto(0,1);                       //Commence a ecrire sur l'ecran a la case 0,0
+                    LCDWriteStr(paramItems[1].label);
+                    LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                    LCDWriteStr(" ");
+                    LCDGoto(1,1);                       //Commence a ecrire sur l'ecran a la case 1,0
+                    LCDWriteStr(paramItems[2].label);
+                    LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                    LCDWriteStr(">");
+                    LCDGoto(2,1);                       //Commence a ecrire sur l'ecran a la case 1,0
+                    LCDWriteStr(paramItems[3].label);
                 }
-
-            }while(choix_men==1);
-            moyenne = 201;
-            LCDClearDisplay();
-            if (OPERATION(moyenne)==0){
                 
+            }while(choix_men==1);
+            
+            if (detecMenu.selected==0){
                 do{
-                    if(keyboard->enterEdge==1){LCDClearDisplay();choix_men=0;delay_en_s(0.2);}
-                    else if(keyboard->downEdge==1){distcount+=1;delay_en_s(0.2);}
-                    else if(keyboard->upEdge==1){distcount-=1;delay_en_s(0.2);}
+                    if(keyboard->enterEdge==1){LCDClearDisplay();choix_men-=1;delay_en_s(0.2);}
+                    else if(keyboard->downEdge==1){distcount-=1;delay_en_s(0.2);}
+                    else if(keyboard->upEdge==1){distcount+=1;delay_en_s(0.2);}
                     if (distcount<0){
                         LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
                         LCDWriteStr("!Warning No Neg!");
@@ -361,92 +421,93 @@ void menu_principale(Keyboard *keyboard)
                         LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
                         LCDWriteStr("Enter: Retour");
                     }
-                    
-                    
-                    
+                      
                 }while(choix_men==2);
             }
             
         }
-        
-        else if (OPERATION(moyenne)==2)              //Affich etat
-        {
-            do{
-                if (exiter==0){
-                    LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
-                        LCDWriteStr("Distance obs");
-                        LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                        LCDWriteStr("Dist: ");
-                        LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                        LCDWriteStr("Enter: Exit");
-                        exiter++;
-                    Time tm = getTime();
-                    while(!isTimeOver(tm,2000)){
-                        if (keyboard->enterEdge==1){
-                            choix_men=0;
-                            exiter=10;
-                        }
-                    };
-                    LCDClearDisplay();
-                }
-                else if (exiter==1){
-                    LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
-                        LCDWriteStr("Vit. Moteurs");
-                        LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                        LCDWriteStr("G:  % D:  %");
-                        LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                        LCDWriteStr("Enter: Exit");
-                        exiter++;
-                    Time tm1 = getTime();
-                    while(!isTimeOver(tm1,2000)){
-                        if (keyboard->enterEdge==1){
-                            choix_men=0;
-                            exiter=10;
-                        }
-                    };
-                    LCDClearDisplay();
-                }
-                else if (exiter==2){
-                    LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
-                        LCDWriteStr("Com. Moteurs");
-                        LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                        LCDWriteStr("G:  % D:  %");
-                        LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                        LCDWriteStr("Enter: Exit");
-                        exiter++;
-                    Time tm2 = getTime();
-                    while(!isTimeOver(tm2,2000)){
-                        if (keyboard->enterEdge==1){
-                            choix_men=0;
-                            exiter=10;
-                        }
-                    };
-                    LCDClearDisplay();
-                }
-                else if (exiter==3){
-                    LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
-                        LCDWriteStr("Capteur IR");
-                        LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                        LCDWriteStr("00X00 : +00");
-                        LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
-                        LCDWriteStr("Enter: Exit");
-                        exiter=0;
-                    Time tm3 = getTime();    
-                    while(!isTimeOver(tm3,2000)){
-                        if (keyboard->enterEdge==1){
-                            choix_men=0;
-                            exiter=10;
-                        }
-                    };
-                    LCDClearDisplay();
-                }
-                else{
-                    choix_men=0;
-                }
-            }while(choix_men==1);
+            else if (rootMenu.selected==2)              //Affich etat
+            {
+                do{
+                    if (exiter==0){
+                        LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+                            LCDWriteStr("Distance obs");
+                            LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                            LCDWriteStr("Dist: ");
+                            LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                            LCDWriteStr("Enter: Exit");
+                            exiter++;
+                        Time tm = getTime();
+                        while(!isTimeOver(tm,2000)){
+                            if (keyboard->enterEdge==1){
+                                choix_men=0;
+                                exiter=10;
+                            }
+                        };
+                        LCDClearDisplay();
+                    }
+                    else if (exiter==1){
+                        LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+                            LCDWriteStr("Vit. Moteurs");
+                            LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                            LCDWriteStr("G:  % D:  %");
+                            LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                            LCDWriteStr("Enter: Exit");
+                            exiter++;
+                        Time tm1 = getTime();
+                        while(!isTimeOver(tm1,2000)){
+                            if (keyboard->enterEdge==1){
+                                choix_men=0;
+                                exiter=10;
+                            }
+                        };
+                        LCDClearDisplay();
+                    }
+                    else if (exiter==2){
+                        LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+                            LCDWriteStr("Com. Moteurs");
+                            LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                            LCDWriteStr("G:  % D:  %");
+                            LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                            LCDWriteStr("Enter: Exit");
+                            exiter++;
+                        Time tm2 = getTime();
+                        while(!isTimeOver(tm2,2000)){
+                            if (keyboard->enterEdge==1){
+                                choix_men=0;
+                                exiter=10;
+                            }
+                        };
+                        LCDClearDisplay();
+                    }
+                    else if (exiter==3){
+                        LCDGoto(0,0);                       //Commence a ecrire sur l'ecran a la case 0,0
+                            LCDWriteStr("Capteur IR");
+                            LCDGoto(1,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                            LCDWriteStr("00X00 : +00");
+                            LCDGoto(2,0);                       //Commence a ecrire sur l'ecran a la case 1,0
+                            LCDWriteStr("Enter: Exit");
+                            exiter=0;
+                        Time tm3 = getTime();    
+                        while(!isTimeOver(tm3,2000)){
+                            if (keyboard->enterEdge==1){
+                                choix_men=0;
+                                exiter=10;
+                            }
+                        };
+                        LCDClearDisplay();
+                    }
+                    else{
+                        choix_men=0;
+                    }
+                }while(choix_men==1);
+                choix_men=0;
+            }
             
-        }
-        
+            LCDClearDisplay();
+            
+            
+           
     }while(choix_men<3);
     
     
