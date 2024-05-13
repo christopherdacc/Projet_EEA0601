@@ -40,7 +40,7 @@ Ce robot a pour fonction de suivre une trajectoire (suit une ligne dessinée par
 
 * Séance 7 (06/03/2024):
       Correction du Schéma de la carte.
-      On a commencé a realisé la carte.
+      Correction de la carte par rapport au changements du schéma.
       Un peut de modification du code pour qu'il marche (ne marche toujours pas).
 
 * Séance 7.1 sup (07/03/2024):
