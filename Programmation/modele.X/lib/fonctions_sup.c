@@ -44,7 +44,7 @@ void menu_principale(Keyboard *keyboard)
     int savedist1=0;
     int savedist2=0;
     char distance[100] = {'0','1','2','3','4','5','6','7','8','9'}; 
-    int distcount=0;
+    int distcount=0, Pcount=0, Dcount=0, Icount=0, rapidecount=0, lentcount=0;
     //testing start
     MenuValue manuValue[]={{0,0,0,100,0},{0,0,0,100,0}};
     MenuValue distValue[]={{0,0,0,100,1}};
@@ -377,7 +377,7 @@ void menu_principale(Keyboard *keyboard)
                 
             }while(choix_men==1);
             
-            if (detecMenu.selected==0){
+            if (paramMenu.selected==0){
                 do{
                     if(keyboard->enterEdge==1){LCDClearDisplay();choix_men-=1;delay_en_s(0.2);}
                     else if(keyboard->downEdge==1){distcount-=1;delay_en_s(0.2);}

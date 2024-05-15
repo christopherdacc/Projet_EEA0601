@@ -39,12 +39,6 @@ struct menuvalue{
     short type;         //0 la valeu change lors du changement, 1 la valeur change apres appuie sur entree
 };
 
-typedef struct {
-    short R;
-    short N;
-    short B;
-}Edge;
-
 void menu_principale(Keyboard *keyboard);
 int detect_button_press(int button);
 void delay_en_s(float time);
