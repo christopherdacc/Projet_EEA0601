@@ -1,0 +1,35 @@
+typedef struct menu Menu;
+typedef struct menuitem MenuItem;
+typedef struct menuvalue MenuValue;
+
+typedef struct{
+    int upState:2;
+    int downState:2;
+    int enterState:2;
+    int upEdge:2;
+    int downEdge:2;
+    int enterEdge:2;
+}Keyboard;
+
+struct menu{
+    char *title;
+    Menu *root; 
+    MenuItem *items;  
+    short offset:6;  
+    short selected:4; 
+};
+
+struct menuitem{
+    char *label; 
+    void *action;
+    short type:2; 
+    short checked:1;  
+};
+
+struct menuvalue{
+    int tuningValue;
+    int *tunedValue;
+    int min;
+    int max;
+    short type; 
+};

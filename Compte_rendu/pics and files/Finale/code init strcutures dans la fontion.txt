@@ -1,0 +1,19 @@
+#define ACTIONS "Actions        "
+#define PARAMETRES "Parametres     "
+#define AFFETAT "Aff. Etat      "
+
+Menu rootMenu;
+
+void menu_principale(){
+
+MenuValue manuValue[]={{0,0,0,100,0},{0,0,0,100,0}};
+
+MenuItem rootItems []={{ACTIONS,&actionMenu,2,0},{PARAMETRES,&paramMenu,2,0},{AFFETAT,&affetatMenu,2,0}};
+
+rootMenu.title = NULL;
+rootMenu.root =NULL;
+rootMenu.items = rootItems;
+rootMenu.selected = 0;
+rootMenu.offset = 0;
+
+}

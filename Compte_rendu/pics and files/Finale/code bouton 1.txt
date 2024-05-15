@@ -1,0 +1,58 @@
+#define BUTTON1_PIN   PORTBbits.RB0
+#define BUTTON2_PIN   PORTBbits.RB1
+#define BUTTON3_PIN   PORTBbits.RB2
+
+void init_pins() {
+    TRISBbits.TRISB0 = 1;
+    TRISBbits.TRISB1 = 1;
+    TRISBbits.TRISB2 = 1;  
+}
+
+int detect_button_press(int button) {
+    switch(button) {
+        case 1:
+            return !BUTTON1_PIN;
+        case 2:
+            return !BUTTON2_PIN;
+        case 3:
+            return !BUTTON3_PIN;
+        default:
+            return 0;
+    }
+}
+
+int16_t main(void)
+{
+    init_pins();
+    int loop = 1;
+    do{
+	while (detect_button_pressed(1)==1)
+        {
+            LCDGoto(0,0);                       
+            LCDWriteStr("Button 1 = 1");
+        }
+	while (detect_button_pressed(2)==1)
+        {
+            LCDGoto(1,0);                       
+            LCDWriteStr("Button 2 = 1");
+        }  
+        while (detect_button_pressed(3)==1)
+        { 
+            LCDGoto(2,0);                       
+            LCDWriteStr("Button 3 = 1");
+        }
+	while(detect_button_pressed(1)==0&&
+		detect_button_pressed(1)==0&&
+		detect_button_pressed(1)==0)
+        {
+            LCDGoto(0,0);                       
+            LCDWriteStr("Button 1 = 0");
+            LCDGoto(1,0);                     
+            LCDWriteStr("Button 2 = 0");
+            LCDGoto(2,0);                     
+            LCDWriteStr("Button 3 = 0");
+        }
+        
+      }while(loop==1);
+
+}

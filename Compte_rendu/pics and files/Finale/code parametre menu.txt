@@ -1,0 +1,53 @@
+int savedist1=0, savedist2=0, distcount=0;
+char distance[100] = {'0','1','2','3','4','5','6','7','8','9'}; 
+do{
+...
+if (paramMenu.selected==0){
+                do{
+                    if(keyboard->enterEdge==1){LCDClearDisplay();choix_men-=1;delay_en_s(0.2);}
+                    else if(keyboard->downEdge==1){distcount-=1;delay_en_s(0.2);}
+                    else if(keyboard->upEdge==1){distcount+=1;delay_en_s(0.2);}
+                    if (distcount<0){
+                        LCDGoto(0,0);                      
+                        LCDWriteStr("!Warning No Neg!");
+                        LCDGoto(1,0);                    
+                        LCDWriteStr("  !!!Values!!!  ");
+                        LCDGoto(2,0);                     
+                        LCDWriteStr("                ");
+                        delay_en_s(1.5);
+                        distcount=0;
+                    }
+                    else if (distcount<10){
+                        LCDGoto(0,0);                      
+                        LCDWriteStr("[Detection Obs] ");
+                        LCDGoto(1,0);                       
+                        LCDWriteStr("Dis:            ");
+                        LCDGoto(1,5);
+                        LCDDataWrite(distance[distcount]);
+                        LCDGoto(1,8);
+                        LCDWriteStr("cm       ");
+                        LCDGoto(2,0);                      
+                        LCDWriteStr("Enter: Retour");
+                    }
+                    
+                    else if (distcount>9){
+                        LCDGoto(0,0);                       
+                        LCDWriteStr("[Detection Obs] ");
+                        LCDGoto(1,0);                      
+                        LCDWriteStr("Dis: ");
+                        savedist1=distcount/10;
+                        savedist2 = OPERATION2(distcount);
+                        LCDGoto(1,5);
+                        LCDDataWrite(distance[savedist1]);
+                        LCDGoto(1,6);
+                        LCDDataWrite(distance[savedist2]);
+                        LCDGoto(1,8);
+                        LCDWriteStr("cm       ");
+                        LCDGoto(2,0);                       
+                        LCDWriteStr("Enter: Retour");
+                    }
+                      
+                }while(choix_men==2);
+            }
+...
+}while(choix_men=0);
