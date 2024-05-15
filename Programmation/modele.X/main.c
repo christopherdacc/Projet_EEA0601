@@ -167,15 +167,15 @@ void __attribute__(( __interrupt__ ,__auto_psv__ )) _CNInterrupt(void) {
 /******************************************************************************/
 
 //initialisation des pates RE0, RE1 et RE2 aux boutons 1, 2 et 3
-#define BUTTON1_PIN   PORTBbits.RB0  // Bouton 1 connecter a RE0
-#define BUTTON2_PIN   PORTBbits.RB1  // Bouton 2 connecter a RE1
-#define BUTTON3_PIN   PORTBbits.RB2  // Bouton 3 connecter a RE2
+#define BUTTON1_PIN   PORTBbits.RB0  // Bouton 1 connecter a RB0
+#define BUTTON2_PIN   PORTBbits.RB1  // Bouton 2 connecter a RB1
+#define BUTTON3_PIN   PORTBbits.RB2  // Bouton 3 connecter a RB2
 
 //fonction d'initialisation des pins RE0, RE1, RE2
 void init_pins() {
-    TRISBbits.TRISB0 = 1; // Configure RE0 comme une entree du bouton 1
-    TRISBbits.TRISB1 = 1; // Configure RE1 comme une entree du bouton 2
-    TRISBbits.TRISB2 = 1; // Configure RE2 comme une entree du bouton 3
+    TRISBbits.TRISB0 = 1; // Configure RB0 comme une entree du bouton 1
+    TRISBbits.TRISB1 = 1; // Configure RB1 comme une entree du bouton 2
+    TRISBbits.TRISB2 = 1; // Configure RB2 comme une entree du bouton 3
     //les 3 lignes de code suivantes sont utiliser pour activer les pull up resistors pour RE0, RE1 et RE2
     CNPU1bits.CN2PUE = 1;       // Enable pull-up resistor for RB0
     CNPU1bits.CN3PUE = 1;       // Enable pull-up resistor for RB1
